@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미니 프로젝트</title>
+  </head>
+  <body>
+    <header class="s_header">
+      <h1>개발자 안치호</h1>
+      <nav>
+        <a href="#about">소개</a><br />
+        <a href="#skill">기술스택</a><br />
+        <a href="#portfolio">포트폴리오</a><br />
+        <a href="#contact">연락처</a>
+      </nav>
+    </header>
+    <hr />
+
+    <main>
+      <section id="about" class="section">
+        <h2>소개</h2>
+        <img
+          height="320"
+          src="https://images.pexels.com/photos/12902862/pexels-photo-12902862.jpeg"
+          alt="소개 이미지"
+        />
+        <p>안녕하세요 HTML을 다시 배우고 있는 개발자 안치호 입니다.</p>
+        <p>웹의 기본적인 원리를 복습하고 있습니다.</p>
+
+        <p><b>📹 추천 영상 보기</b></p>
+        <iframe
+          width="600"
+          height="350"
+          src="https://www.youtube.com/embed/oJ3PZSp8qzY?list=RDoJ3PZSp8qzY"
+          title="playlist 자꾸 윙크가 자꾸 나오는😉 빡센 외힙 플레이리스트💪"
+          frameborder="0"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share;
+          "
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </section>
+      <hr />
+
+      <section id="skill" class="section">
+        <h2>기술 스택</h2>
+        <ul>
+          <li>파이썬</li>
+          <li>자바스크립트</li>
+          <li>타입스크립트</li>
+          <li>리액트</li>
+          <li>리액트네이티브</li>
+          <li>테일윈드</li>
+          <li>zustand</li>
+          <li>FastAPI</li>
+        </ul>
+      </section>
+      <hr />
+
+      <section id="portfolio" class="section">
+        <h2>프로젝트 이력</h2>
+        <p>그동안 진행한 주요 개발 프로젝트 요약입니다.</p>
+
+        <table border="1">
+          <thead>
+            <tr>
+              <th>프로젝트명</th>
+              <th>주요 기술</th>
+              <th>담당 역할</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>주식 분석 정보 플랫폼</td>
+              <td>FastAPI, Supabase, React</td>
+              <td>전반적인 모든 과정</td>
+            </tr>
+            <tr>
+              <td>뉴스 기반 학습 앱</td>
+              <td>React Native, OpenAI API</td>
+              <td>자동 퀴즈 생성 및 TTS 기능 개발</td>
+            </tr>
+            <tr>
+              <td>StyleMate (OOTD 추천)</td>
+              <td>React, Spring Boot</td>
+              <td>RAG 패턴 및 프론트엔드 아키텍처 설계</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <hr />
+
+      <section class="section" id="contact">
+        <h2>연락처</h2>
+        <a href="tel:010-1234-5678">전화 걸기</a><br />
+        <a href="mailto:cho868632@gmail.com?subject=문의사항입니다"
+          >이메일 보내기</a
+        >
+        <br /><br />
+
+        <form action="/send" method="post">
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name" required />
+          <br /><br />
+
+          <div>
+            <label for="msg">하고 싶은 말</label>
+            <div>
+              <textarea id="msg" name="msg" rows="3" cols="40"></textarea>
+            </div>
+          </div>
+          <br />
+          <button type="submit" class="btn">보내기</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

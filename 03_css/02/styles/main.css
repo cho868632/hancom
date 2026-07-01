@@ -1,0 +1,25 @@
+body {
+  background: yellow;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  color: red;
+  text-align: center;
+}
+p {
+  color: powderblue;
+  font-weight: bold;
+}
+.special {
+  color: black;
+}
+li {
+  font-size: 3rem;
+}
+li em {
+  color: pink;
+  font-weight: bold;
+  font-size: 1rem;
+}

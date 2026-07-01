@@ -1,0 +1,28 @@
+/* 큰것부터 작은것 순으로 스타일 잡음 */
+/* 일반 → 구체 순서로 작성 — 넓은 것 먼저, 콕 집는 것 나중
+• body(전체) → 요소(h1·p) → 클래스(.special) → 자손(li em) 순서로 쌓기
+• 충돌 시 구체적인 선택자·나중 줄이 이김 → 이 순서 지키면 의도대로 동작 */
+body {
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  background: #000;
+  color: red;
+}
+p {
+  color: green;
+}
+.special {
+  color: orange;
+}
+.special1 {
+  color: blue;
+}
+li {
+  color: aqua;
+  font-size: 2em;
+}
+li em {
+  color: purple;
+}

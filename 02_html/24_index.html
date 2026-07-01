@@ -1,0 +1,48 @@
+<!-- html 문서선언 -->
+<!doctype html>
+<!-- 한국어 페이지 선언 -->
+<html lang="ko">
+  <!-- 화면엔 안 보이는 준비 칸 -->
+  <head>
+    <!-- 한글 안 깨지게 -->
+    <meta charset="UTF-8" />
+    <!-- 브라우저 탭에 뜨는 이름 -->
+    <title>입력 칸 종류</title>
+  </head>
+  <!-- 화면에 보이는 진짜 내용 칸 -->
+  <body>
+    <form>
+      <!-- 입력칸들을 담는 묶음 상자 -->
+      <input type="color" name="" id="" />
+      <input type="email" placeholder="메일" /><br />
+      <!-- 메일 칸 (@ 들어갔는지 검사) -->
+      <input type="password" /><br />
+      <!-- 점(••)으로 가려지는 칸 -->
+      <label><input type="checkbox" /> 동의</label><br />
+      <!-- 여러 개 고르기(네모) -->
+      <label><input type="radio" name="gender" /> 남</label
+      ><label><input type="radio" name="gender" /> 여</label><br />
+      <!-- 하나만 고르기(동그라미), name 같으면 한 묶음 -->
+      <input type="date" /><br />
+      <!-- 날짜 고르기(달력) -->
+      <textarea>긴 글 칸</textarea><br />
+      <!-- 여러 줄 긴 글 칸 -->
+      <select>
+        <!-- 펼쳐서 하나 고르기(드롭다운) -->
+        <option>서울</option>
+        <!-- 고를 항목 1 -->
+        <option>부산</option>
+        <!-- 고를 항목 2 -->
+      </select>
+    </form>
+  </body>
+</html>
+<!-- <input>의 type만 바꾸면 칸 모양이 달라짐 — 회원가입 폼에 딱 맞는 칸 고르기 (STEP 15 보강)
+
+• type="email" — 메일 칸(@ 검사)
+• type="password" — 점(••)으로 가려지는 칸
+• type="checkbox" — 여러 개 고르기(네모)
+• type="radio" — 하나만 고르기(동그라미)
+• type="date" — 날짜 고르기(달력)
+• <textarea> — 여러 줄 긴 글 칸
+• <select> — 펼쳐서 하나 고르기(드롭다운) -->

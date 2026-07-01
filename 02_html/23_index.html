@@ -1,0 +1,51 @@
+<!-- html 문서선언 -->
+<!doctype html>
+<!-- 한국어 페이지 선언 -->
+<html lang="ko">
+  <!-- 화면엔 안 보이는 준비 칸 -->
+  <head>
+    <!-- 한글 안 깨지게 -->
+    <meta charset="UTF-8" />
+    <!-- 브라우저 탭에 뜨는 이름 -->
+    <title>링크 더 쓰기</title>
+    <style>
+      .title {
+        font-size: 5rem;
+      }
+    </style>
+  </head>
+  <!-- 화면에 보이는 진짜 내용 칸 -->
+  <body id="top">
+    <div>
+      <a href="#bottom"><span class="title">링크 심화</span></a>
+    </div>
+    <!-- id="top" = 이 위치에 '이름표' 붙임 → 아래 #top가 찾아올 목적지 (STEP 19 id와 짝) -->
+    <a href="https://google.com" target="_blank">새 탭</a>
+    <!-- target="_blank" → 새 탭에서 열기 -->
+    <a href="mailto:hi@me.com">메일</a>
+    <!-- mailto: → 누르면 메일 쓰기 창 -->
+    <a href="tel:01012345678">전화</a>
+    <!-- tel: → 폰에서 누르면 전화 걸기 -->
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- 빈 줄(br) 여러 개 = 페이지를 길게 늘림 → 스크롤바 생김 (스크롤이 있어야 '맨 위로' 효과가 보임) -->
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- br 한 개 = 줄바꿈 1번. 화면 높이보다 길어지면 자동으로 스크롤이 만들어짐 -->
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <p>여기까지 내렸으면 아래 '맨 위로' 눌러보기</p>
+    <!-- 스크롤을 끝까지 내렸을 때 보이는 안내 문구 -->
+    <a href="#top" id="bottom">맨 위로</a>
+    <!-- #top 클릭 → 맨 위 body의 id="top" 위치로 점프 (위로 이동) -->
+  </body>
+</html>
+<!-- 
+<a>에 붙이는 속성마다 하는 일이 다름
+target="_blank" — 새 탭에서 열기
+href="#top" — 같은 페이지의 id="top" 위치로 점프(STEP 19 id와 짝)
+href="mailto:…" — 메일 쓰기 창
+href="tel:…" — 전화 걸기(폰)
+ -->

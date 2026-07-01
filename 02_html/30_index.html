@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>음성넣기</title>
+  </head>
+  <body>
+    <div>
+      <!-- 음성 재생 상자(재생 버튼) -->
+      <audio controls autoplay loop>
+        <source src="./audio_ko.mp3" type="audio/mpeg" />
+
+        지금 브라우저는 audio 미지원
+      </audio>
+    </div>
+    <div>
+      <audio controls>
+        <source src="./audio_en.mp3" type="audio/mpeg" />
+        지금 브라우저는 audio 미지원
+      </audio>
+    </div>
+  </body>
+</html>
+<!-- 이 오디오 태그도 마찬가지로 소스 태그를 추가해서 실패를 방지할 옵션을 제공함 -->

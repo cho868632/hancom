@@ -1,0 +1,43 @@
+<!-- html 문서선언 -->
+<!doctype html>
+<!-- 한국어 페이지 선언 -->
+<html lang="ko">
+  <!-- 화면엔 안 보이는 준비 칸 -->
+  <head>
+    <!-- 한글 안 깨지게 -->
+    <meta charset="UTF-8" />
+    <!-- 브라우저 탭에 뜨는 이름 -->
+    <title>이미지 경로</title>
+  </head>
+  <!-- 화면에 보이는 진짜 내용 칸 -->
+  <body>
+    <!-- src 경로 = 사진이 어느 폴더에 있는지 길 안내 -->
+    <div>
+      <!-- ./ = 지금 폴더 안 img 폴더 -->
+      <img width="200" src="./image.png" alt="logo" />
+      <p>아직도 잘나가나?</p>
+    </div>
+    <div>
+      <!-- ../ = 한 칸 위 폴더 -->
+      <img src="../image.png" alt="shoe" />
+      <p>에어포스가 18만원?? 말세다 ㄹㅇ</p>
+    </div>
+    <div>
+      <!-- https:// = 인터넷 주소 그대로(절대경로) -->
+      <img
+        width="200"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt8t8VeDQ8xlJV9Q6JGVwANoZ6bUezmkKQgmbRNvahuw&s=10"
+        alt="albumcover"
+      />
+      <p>이 형은 은퇴를 한거임 안한거임?</p>
+    </div>
+    <div>
+      <img
+        width="200"
+        src="https://i.namu.wiki/i/WEwu7KxQEjTvGs6I3qBKJ47TxPUgqIPUJWqdHsRHUUh8qhu9DbAMJloLiSQd7ZeHmgc0oZ5HjiCR9RZqtoOGMEGSwKKZdL-Uuua4a-c25coSwKBpnOTSqN-OayBWhpGTx37lEuSJp67SP4wGyopeHQ.svg"
+        alt="logo"
+      />
+      <p>서울대 인맥으로 네이버 삼;; 언제 합병하냐</p>
+    </div>
+  </body>
+</html>

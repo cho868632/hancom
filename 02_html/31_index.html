@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- ① meta = 화면엔 안 보이는 '정보 쪽지' 태그 (브라우저한테 주는 메모) -->
+    <!-- ② name="viewport" = 이 쪽지는 '보이는 화면 영역' 설정이다 -->
+    <!-- ③ width=device-width = 페이지 너비를 기기 화면 너비에 맞춤 (폰이면 폰 너비, PC면 PC 너비) -->
+    <!-- ④ initial-scale=1.0 = 처음 확대 배율 1배(원래 크기) -->
+    <!-- ★ 모바일 '전용' 아님! 모든 기기 크기에 맞추는 반응형의 출발점. 없으면 폰에서 글자가 깨알같이 작게 나옴 -->
+
+    <title>자동완성</title>
+  </head>
+  <body>
+    <h1>자동완성</h1>
+    <!-- ul>li*3 치고 Tab → 펼쳐짐 (> 안에 넣기, *3 = 3번 반복) -->
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <ol>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ol>
+    <!-- .box 치고 Tab → 펼쳐짐 (. = class) 범용성이 높은 div 태그로 생성-->
+    <div class="box"></div>
+    <!-- #box 치고 Tab → 펼쳐짐 (# = id) 범용성이 높은 div 태그로 생성-->
+    <div id="box"></div>
+    <!--h1{안녕} 치고 Tab → 펼쳐짐 ({ } = 안에 들어갈 내용) -->
+    <h1>안녕</h1>
+    <!-- a[href=#]치고 Tab → 펼쳐짐 ([ ] = 속성) -->
+    <a href="#"></a>
+  </body>
+</html>
+<!--
+한번에 정리 
+• > — 안에 넣기(자식). ul>li = ul 안에 li
+• *N — N번 반복. li*3 = li 3개
+• .이름 — class 붙이기. .box = class="box"
+• #이름 — id 붙이기. #top = id="top"
+• {글자} — 태그 안의 내용. h1{안녕} = <h1>안녕</h1>
+• [속성] — 속성 넣기. a[href=#] = href="#"
+ -->

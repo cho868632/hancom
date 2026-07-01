@@ -1,0 +1,21 @@
+<!-- html 문서선언 -->
+<!doctype html>
+<!-- 한국어 페이지 선언 -->
+<html lang="ko">
+  <!-- 화면엔 안 보이는 준비 칸 -->
+  <head>
+    <!-- 한글 안 깨지게 -->
+    <meta charset="UTF-8" />
+    <!-- 브라우저 탭에 뜨는 이름 -->
+    <title>영상 넣기</title>
+  </head>
+  <!-- 화면에 보이는 진짜 내용 칸 -->
+  <body>
+    <h1>영상 넣기</h1>
+    <!-- autoplay 가 동작하려면 영상의 소리가 없거나 muted 옵션을 넣어야함-->
+    <video width="320" controls autoplay loop muted>
+      <source src="./video.mp4" type="video/mp4" />
+    </video>
+  </body>
+</html>
+<!-- 공식문서에서 video 태그에 직접 넣는게 아닌 source 태그를 추가해 비디오를 넣는 이유는 모든 브라우저에서 모든 비디오 코덱을 지원하지 않기 때문에 옵션을 여러개 준다는 의도 => 맨 위의 소스를 재생하고 안되면 아래 영상을 로딩하는 식  -->

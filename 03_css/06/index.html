@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 붙이는 3가지 방법 (외부 · 내부 · 인라인)</title>
+    <!-- ① 외부 -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <style>
+      /* ② 내부 , 스타일로 넣을꺼면 헤드 위에 넣는걸 권장*/
+      p {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>3가지 방법</h1>
+    <p>내부 스타일로 초록</p>
+    <!-- ③ 인라인 -->
+    <p style="color: red">인라인으로 빨강</p>
+  </body>
+</html>
+<!--  
+보통 외부 link 권장 (여러 페이지 공유·관리 쉬움)
+외부 <link> — 별도 파일, 여러 페이지 공유(권장)
+내부 <style> — <head> 안, 한 페이지
+인라인 style="" — 태그에 바로, 한 요소
+충돌 우선순위: 인라인 > 내부·외부 
+내부 외부 중에서는 둘중 먼저 선언된게 이김
+-->

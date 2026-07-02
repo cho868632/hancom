@@ -1,0 +1,25 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>카드 뒤집기 (3D flip)</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <!-- .card 안 .inner가 회전 → 앞면/뒷면 두 장을 겹쳐 둠 -->
+    <div class="card">
+      <!-- 이너클래스 : 실제로 돌아가는 부분 -->
+      <div class="inner">
+        <div class="front">앞면</div>
+        <div class="back">뒷면!</div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 
+• transform: rotateY 회전 + transition 부드럽게
+• transform-style: preserve-3d 입체 공간
+• backface-visibility: hidden 뒷면 숨김
+• :hover 시 180도 → 카드 뒤집기 완성 -->

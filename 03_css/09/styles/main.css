@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.box {
+  width: 120px;
+  height: 120px; /* 박스 크기 (가로·세로 120px) */
+  display: flex; /* flex: 안의 글자를 가운데 두려고 */
+  align-items: center; /* 세로 가운데 정렬 */
+  justify-content: center; /* 가로 가운데 정렬 */
+  background: hotpink; /* 배경색 */
+  color: white; /* 글자색 */
+  border-radius: 16px; /* 모서리 둥글게 (값 클수록 더 둥금) */
+  transition: transform 0.3s ease; /* transform이 바뀔 때 0.3초에 걸쳐 부드럽게 (ease=끝에 천천히) */
+}
+.box2 {
+  margin-top: 10px;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: wheat;
+  border-radius: 20px;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* :hover = 마우스 올렸을 때만 적용 */
+.box:hover {
+  transform: rotate(100deg) scale(1.2);
+} /* rotate(10deg): 10도 기울임 · scale(1.2): 1.2배 확대 */
+.box2:hover {
+  transform: rotate(180deg) scale(2);
+}

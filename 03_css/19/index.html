@@ -6,7 +6,7 @@
     <title>미니 프로젝트</title>
     <link rel="stylesheet" href="styles/main.css" />
   </head>
-  <body>
+  <body id="top">
     <nav class="nav">
       <div class="wrap">
         <span class="brand">Report</span>
@@ -47,6 +47,29 @@
           />
           <div class="analysis-text">
             <h3>어떤 기술을 썼나 (추정)</h3>
+            <ul class="ref-links">
+                <li>
+                  <a
+                    href="https://www.airbnb.com"
+                    target="_blank"
+                    >Airbnb 사이트</a
+                  >
+                </li>
+              <li>
+                <a
+                  href="https://developer.mozilla.org/ko/"
+                  target="_blank"
+                  >MDN 공식문서</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://frontend-fundamentals.com/a11y/"
+                  target="_blank"
+                  >A11y Fundamentals(Toss)</a
+                >
+              </li>
+            </ul>
               <ul>
                 <li>
                   숙소 카드는 <b>이미지 → 배지 → 지역명 → 가격 → 평점</b> 순서의
@@ -66,6 +89,12 @@
                 <li>
                   가격 텍스트가 화면에 한 번, 스크린리더용으로 숨겨서 한 번 더 —
                   접근성까지 고려한 재사용 패턴
+                </li>
+                <li>
+                  개발자도구로 뜯어보면 <code>aria-label</code>,
+                  <code>aria-hidden</code>, <code>role</code> 속성이 거의
+                  모든 인터랙션 요소에 붙어 있음 — a11y를 거의 강박적으로
+                  챙기는 수준
                 </li>
               </ul>
           </div>
@@ -122,7 +151,7 @@
 
           <div class="concept-card">
             <span class="num">flex</span>
-            <h3>가로 정렬</h3>
+            <h3>flex</h3>
             <p>
               네비게이션 메뉴, 분석 다이어그램의 카드 캐러셀처럼 자식을 가로로
               나란히 둘 때 display: flex 한 줄로 해결.
@@ -132,7 +161,7 @@
 
           <div class="concept-card">
             <span class="num">grid</span>
-            <h3>2차원 카드 배열</h3>
+            <h3>grid</h3>
             <p>
               정리 카드 6개를 3열로 배치. Airbnb 바닥글 다단 링크처럼 fr 단위로
               균등 분할하고 media query로 열 개수 조정.
@@ -164,20 +193,20 @@
             <span class="num">::before/after</span>
             <h3>가짜 요소로 장식</h3>
             <p>
-              인용문 앞뒤에 따옴표를, 퀴즈 카드 옆에 색 띠를 HTML 수정 없이
-              CSS만으로 추가.
+              바로 이 카드 왼쪽의 색 띠가 ::before로 만든 가짜 요소. HTML을
+              건드리지 않고 CSS만으로 장식용 요소를 추가.
             </p>
-            <code>.quote::before { content: open-quote; }</code>
+            <code>.concept-card::before { content: ""; }</code>
           </div>
 
           <div class="concept-card">
             <span class="num">애니메이션</span>
             <h3>@keyframes</h3>
             <p>
-              hero의 꽃잎 아이콘이 위아래로 은은하게 떠다니도록 float 애니메이션
-              적용.
+              상단 네비게이션의 "Report" 로고 텍스트에 그라디언트가 좌우로
+              흐르는 반짝임 효과를 @keyframes로 구현.
             </p>
-            <code>animation: float 6s ease-in-out infinite;</code>
+            <code>animation: brand-shine 4s linear infinite;</code>
           </div>
 
           <div class="concept-card">
@@ -194,5 +223,7 @@
         </div>
       </div>
     </section>
+
+    <a href="#top" class="to-top" aria-label="맨 위로">↑</a>
   </body>
 </html>

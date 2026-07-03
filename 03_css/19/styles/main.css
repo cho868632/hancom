@@ -45,7 +45,7 @@ p {
 }
 
 .wrap {
-  max-width: 960px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -67,8 +67,23 @@ p {
 .nav .brand {
   font-family: Georgia, serif;
   font-style: italic;
-  color: var(--accent-strong);
   font-size: 1.1rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-strong),
+    var(--accent),
+    var(--accent-strong)
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: brand-shine 4s linear infinite;
+}
+@keyframes brand-shine {
+  to {
+    background-position: -200% center;
+  }
 }
 .nav ul {
   display: flex;
@@ -141,7 +156,45 @@ p {
   flex: 1;
   min-width: 0;
 }
+.analysis-text code {
+  background: var(--line);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+.ref-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin-bottom: var(--gap);
+}
+.ref-links a {
+  display: inline-block;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+}
+.ref-links a:hover {
+  background: var(--accent);
+  color: #fff;
+}
 
+/* 
+.concept-card code {
+  display: block;
+  background: #2b2733;
+  color: #f1eaff;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  overflow-x: auto;
+} */
 .verdict {
   display: flex;
   flex-direction: row;
@@ -189,6 +242,16 @@ section.block {
     box-shadow 0.3s ease;
   position: relative;
 }
+.concept-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--radius) 0 0 var(--radius);
+}
 .concept-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 30px rgba(111, 91, 150, 0.22);
@@ -217,6 +280,27 @@ section.block {
   font-size: 0.9rem;
   color: var(--ink-soft);
   margin-bottom: 0;
+}
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-strong);
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  z-index: 40;
+  transition: background 0.2s ease;
+}
+.to-top:hover {
+  background: var(--accent);
 }
 @media (max-width: 760px) {
   .concept-grid {

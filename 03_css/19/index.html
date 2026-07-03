@@ -1,0 +1,198 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>미니 프로젝트</title>
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="wrap">
+        <span class="brand">Report</span>
+        <ul>
+          <li><a href="#analysis">분석</a></li>
+          <li><a href="#summary">정리</a></li>
+          <li><a href="">퀴즈</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="wrap">
+        <span class="eyebrow">HTML &amp; CSS PROJECT</span>
+        <h1>에어비엔비 분석</h1>
+        <p class="lead">
+          에어비앤비가 프론트엔드 생태계에서 갖는 상징성에 주목하여, 실제
+          웹페이지의 HTML과 CSS 아키텍처를 뜯어보았습니다.
+        </p>
+      </div>
+    </header>
+
+    <section class="block" id="analysis">
+      <div class="wrap">
+        <span class="section-tag">01</span>
+        <h2>사이트 분석 - Airbnb 랜딩 페이지</h2>
+        <p class="section-desc">
+          Airbnb 홈페이지는 리액트 기반이라 실제 컴파일된 CSS는 볼 수 없었지만,
+          Airbnb가 공개한 스타일가이드는 회사·팀이 이 가이드를 그대로, 또는 조금
+          수정해서 자기 팀 컨벤션으로 쓰고 있을 만큼 영향력이 큽니다. 그래서
+          분석 해 봤습니다.
+        </p>
+        <div class="explain">
+          <img
+            class="landing-img"
+            src="./asset/image.png"
+            alt="airbnblandingimg"
+          />
+          <div class="analysis-text">
+            <h3>어떤 기술을 썼나 (추정)</h3>
+              <ul>
+                <li>
+                  숙소 카드는 <b>이미지 → 배지 → 지역명 → 가격 → 평점</b> 순서의
+                  마크업이 모든 섹션(뉴욕, 호텔, 시카고, LA…)에서 완전히 동일 —
+                  데이터만 바뀌는 하나의 컴포넌트
+                </li>
+                <li>
+                  카드 목록은 <code>display: flex; overflow-x: auto;</code> 가로
+                  스크롤 캐러셀로 추정 — "n개 중 n개 표시" 텍스트와 인디케이터가
+                  근거
+                </li>
+                <li>
+                  바닥글의 "지원 · 호스팅 · Airbnb" 3단 링크는 캐러셀 요소가
+                  없어
+                  <code>display: grid</code> 다단 배열로 추정
+                </li>
+                <li>
+                  가격 텍스트가 화면에 한 번, 스크린리더용으로 숨겨서 한 번 더 —
+                  접근성까지 고려한 재사용 패턴
+                </li>
+              </ul>
+          </div>
+        </div>
+        <div class="verdict">
+          <div class="pro">
+            <h3>좋았던 점</h3>
+            <p>
+              카드 컴포넌트를 한 번만 잘 짜두면 도시·숙소가 수백 개로
+              늘어나도 CSS 수정이 필요 없는 구조. flex 캐러셀 + grid
+              바닥글처럼 용도에 맞게 다른 레이아웃 기법을 섞어 쓴 점도
+              실무적.
+            </p>
+          </div>
+          <div class="con">
+            <h3>아쉬운 점</h3>
+            <p>
+              실제 컴파일된 CSS 클래스명이 해시값이라 소스만 봐선 어떤
+              속성을 썼는지 정확히 확인이 안 됨. DOM 구조와 화면 동작으로
+              추론한 것이라 100% 단정은 어려움.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="block" id="summary">
+      <div class="wrap">
+        <span class="section-tag">02</span>
+        <h2>HTML &amp; CSS 핵심 정리</h2>
+        <p class="section-desc">
+          01~18에서 배운 내용 중 이 사이트를 만들 때 실제로 쓴 개념만 골라
+          정리했습니다.
+        </p>
+        <div class="concept-grid">
+          <div class="concept-card">
+            <span class="num">선택자</span>
+            <h3>클래스 · 자손 선택자</h3>
+            <p>
+              .class로 콕 집고, li em처럼 띄어쓰면 자손을 선택. 일반 → 구체
+              순서로 작성.
+            </p>
+            <code>.tag { color: var(--accent); }</code>
+          </div>
+          
+          <div class="concept-card">
+            <span class="num">박스모델</span>
+            <h3>padding · margin · border</h3>
+            <p>
+              padding=안쪽 여백, margin=바깥쪽 여백. box-sizing: border-box로
+              크기 계산을 편하게.
+            </p>
+            <code>* { box-sizing: border-box; }</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">flex</span>
+            <h3>가로 정렬</h3>
+            <p>
+              네비게이션 메뉴, 분석 다이어그램의 카드 캐러셀처럼 자식을 가로로
+              나란히 둘 때 display: flex 한 줄로 해결.
+            </p>
+            <code>.nav .wrap { display: flex; }</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">grid</span>
+            <h3>2차원 카드 배열</h3>
+            <p>
+              정리 카드 6개를 3열로 배치. Airbnb 바닥글 다단 링크처럼 fr 단위로
+              균등 분할하고 media query로 열 개수 조정.
+            </p>
+            <code>grid-template-columns: repeat(3, 1fr);</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">position</span>
+            <h3>sticky / relative / absolute</h3>
+            <p>
+              상단 네비게이션은 sticky로 고정, 카드 번호 배지는 relative 부모 +
+              absolute 자식으로 배치.
+            </p>
+            <code>.nav { position: sticky; top: 0; }</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">가상클래스</span>
+            <h3>:hover / LVHA 순서</h3>
+            <p>
+              링크는 link → visited → hover → active 순서로 작성해야 hover
+              효과가 제대로 보임.
+            </p>
+            <code>a:link, a:visited, a:hover, a:active</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">::before/after</span>
+            <h3>가짜 요소로 장식</h3>
+            <p>
+              인용문 앞뒤에 따옴표를, 퀴즈 카드 옆에 색 띠를 HTML 수정 없이
+              CSS만으로 추가.
+            </p>
+            <code>.quote::before { content: open-quote; }</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">애니메이션</span>
+            <h3>@keyframes</h3>
+            <p>
+              hero의 꽃잎 아이콘이 위아래로 은은하게 떠다니도록 float 애니메이션
+              적용.
+            </p>
+            <code>animation: float 6s ease-in-out infinite;</code>
+          </div>
+
+          <div class="concept-card">
+            <span class="num">반응형</span>
+            <h3>media query</h3>
+            <p>
+              화면 폭이 760px, 520px 아래로 줄면 grid 열 수와 flex 방향을 바꿔
+              레이아웃 유지.
+            </p>
+            <code>@media (max-width: 520px) { ... }</code>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

@@ -162,6 +162,26 @@ p {
   border-radius: 6px;
   font-size: 0.8rem;
 }
+.console-easter-egg {
+  background: #1e1e1e;
+  border-radius: var(--radius);
+  padding: 14px;
+  text-align: center;
+}
+.console-easter-egg img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.console-easter-egg figcaption {
+  color: #d4d4d4;
+  font-size: 0.85rem;
+}
+.console-easter-egg figcaption a {
+  color: #6cb6ff;
+}
 .ref-links {
   display: flex;
   flex-wrap: wrap;
@@ -202,7 +222,8 @@ p {
   margin-top: calc(var(--gap) * 5);
 }
 .pro,
-.con {
+.con,
+.fun {
   flex: 1;
 }
 section.block {

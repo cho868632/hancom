@@ -13,7 +13,7 @@
         <ul>
           <li><a href="#analysis">분석</a></li>
           <li><a href="#summary">정리</a></li>
-          <li><a href="">퀴즈</a></li>
+          <li><a href="#quiz">퀴즈</a></li>
         </ul>
       </div>
     </nav>
@@ -34,7 +34,11 @@
         <span class="section-tag">01</span>
         <h2>사이트 분석 - Airbnb 랜딩 페이지</h2>
         <p class="section-desc">
-            신기하거나 특별한건 없는건 사실입니다. 하지만 Airbnb가 공개한 스타일가이드는 회사·팀이 이 가이드를 그대로, 또는 조금 수정해서 자기 팀 컨벤션으로 쓰고 있을 만큼 영향력이 큽니다. 그것과 같은 결로 많은 프론트엔드 개발자가 생각하는 기초, 기본을 이 정도로 철저히 지키는 기업은 흔치 않다고 생각합니다.
+          신기하거나 특별한건 없는건 사실입니다. 하지만 Airbnb가 공개한
+          스타일가이드는 회사·팀이 이 가이드를 그대로, 또는 조금 수정해서 자기
+          팀 컨벤션으로 쓰고 있을 만큼 영향력이 큽니다. 그것과 같은 결로 많은
+          프론트엔드 개발자가 생각하는 기초, 기본을 이 정도로 철저히 지키는
+          기업은 흔치 않다고 생각합니다.
         </p>
         <div class="explain">
           <img
@@ -45,17 +49,13 @@
           <div class="analysis-text">
             <h3>어떤 기술을 썼나 (추정)</h3>
             <ul class="ref-links">
-                <li>
-                  <a
-                    href="https://www.airbnb.com"
-                    target="_blank"
-                    >Airbnb 사이트</a
-                  >
-                </li>
               <li>
-                <a
-                  href="https://developer.mozilla.org/ko/"
-                  target="_blank"
+                <a href="https://www.airbnb.com" target="_blank"
+                  >Airbnb 사이트</a
+                >
+              </li>
+              <li>
+                <a href="https://developer.mozilla.org/ko/" target="_blank"
                   >MDN 공식문서</a
                 >
               </li>
@@ -67,51 +67,49 @@
                 >
               </li>
             </ul>
-              <ul>
-                <li>
-                  숙소 카드는 <b>이미지 → 배지 → 지역명 → 가격 → 평점</b> 순서의
-                  마크업이 모든 섹션(뉴욕, 호텔, 시카고, LA…)에서 완전히 동일 —
-                  데이터만 바뀌는 하나의 컴포넌트
-                </li>
-                <li>
-                  카드 목록은 <code>display: flex; overflow-x: auto;</code> 가로
-                  스크롤 캐러셀로 추정 — "n개 중 n개 표시" 텍스트와 인디케이터가
-                  근거
-                </li>
-                <li>
-                  바닥글의 "지원 · 호스팅 · Airbnb" 3단 링크는 캐러셀 요소가
-                  없어
-                  <code>display: grid</code> 다단 배열로 추정
-                </li>
-                <li>
-                  가격 텍스트가 화면에 한 번, 스크린리더용으로 숨겨서 한 번 더 —
-                  접근성까지 고려한 재사용 패턴
-                </li>
-                <li>
-                  개발자도구로 뜯어보면 <code>aria-label</code>,
-                  <code>aria-hidden</code>, <code>role</code> 속성이 거의
-                  모든 인터랙션 요소에 붙어 있음 — a11y를 거의 강박적으로
-                  챙기는 수준
-                </li>
-              </ul>
+            <ul>
+              <li>
+                숙소 카드는 <b>이미지 → 배지 → 지역명 → 가격 → 평점</b> 순서의
+                마크업이 모든 섹션(뉴욕, 호텔, 시카고, LA…)에서 완전히 동일 —
+                데이터만 바뀌는 하나의 컴포넌트
+              </li>
+              <li>
+                카드 목록은 <code>display: flex; overflow-x: auto;</code> 가로
+                스크롤 캐러셀로 추정 — "n개 중 n개 표시" 텍스트와 인디케이터가
+                근거
+              </li>
+              <li>
+                바닥글의 "지원 · 호스팅 · Airbnb" 3단 링크는 캐러셀 요소가 없어
+                <code>display: grid</code> 다단 배열로 추정
+              </li>
+              <li>
+                가격 텍스트가 화면에 한 번, 스크린리더용으로 숨겨서 한 번 더 —
+                접근성까지 고려한 재사용 패턴
+              </li>
+              <li>
+                개발자도구로 뜯어보면 <code>aria-label</code>,
+                <code>aria-hidden</code>, <code>role</code> 속성이 거의 모든
+                인터랙션 요소에 붙어 있음 — a11y를 거의 강박적으로 챙기는 수준
+              </li>
+            </ul>
           </div>
         </div>
         <div class="verdict">
           <div class="pro">
             <h3>좋았던 점</h3>
             <p>
-              카드 컴포넌트를 한 번만 잘 짜두면 도시·숙소가 수백 개로
-              늘어나도 CSS 수정이 필요 없는 구조. flex 캐러셀 + grid
-              바닥글처럼 용도에 맞게 다른 레이아웃 기법을 섞어 쓴 점도
-              실무적.
+              카드 컴포넌트를 한 번만 잘 짜두면 도시·숙소가 수백 개로 늘어나도
+              CSS 수정이 필요 없는 구조. flex 캐러셀 + grid 바닥글처럼 용도에
+              맞게 다른 레이아웃 기법을 섞어 쓴 점도 어떻게 이 속성이 쓰이는지
+              알아볼 수 있었음.
             </p>
           </div>
           <div class="con">
             <h3>아쉬운 점</h3>
             <p>
-              실제 컴파일된 CSS 클래스명이 해시값이라 소스만 봐선 어떤
-              속성을 썼는지 정확히 확인이 안 됨. DOM 구조와 화면 동작으로
-              추론한 것이라 100% 단정은 어려움.
+              실제 컴파일된 CSS 클래스명이 해시값이라 소스만 봐선 어떤 속성을
+              썼는지 정확히 확인이 안 됨. DOM 구조와 화면 동작으로 추론한 것이라
+              100% 단정은 어려움.
             </p>
           </div>
           <div class="fun">
@@ -122,13 +120,14 @@
                 alt="개발자 도구 콘솔에 표시되는 Airbnb 픽셀 아트 로고"
               />
               <figcaption>
-               개발자 도구 여니까 콘솔에 나오는 채용사이트
+                개발자 도구 여니까 콘솔에 나오는 채용사이트
               </figcaption>
             </figure>
           </div>
         </div>
       </div>
     </section>
+
     <section class="block" id="summary">
       <div class="wrap">
         <span class="section-tag">02</span>
@@ -147,7 +146,7 @@
             </p>
             <code>.tag { color: var(--accent); }</code>
           </div>
-          
+
           <div class="concept-card">
             <span class="num">박스모델</span>
             <h3>padding · margin · border</h3>
@@ -228,10 +227,120 @@
             <code>@media (max-width: 520px) { ... }</code>
           </div>
         </div>
-        
+      </div>
+    </section>
+
+    <section class="block" id="quiz">
+      <div class="wrap">
+        <span class="section-tag">03</span>
+        <h2>HTML &amp; CSS 퀴즈</h2>
+        <p class="section-desc">
+          정답을 먼저 생각해 본 뒤 "정답 보기"를 눌러 확인하세요.
+        </p>
+
+        <div class="quiz-list">
+          <div class="quiz-card">
+            <p class="quiz-q">
+              <span class="qnum">Q1.</span>다음 중 클래스 선택자는 무엇일까요?
+            </p>
+            <ul>
+              <li>A. h1 { color: red; }</li>
+              <li>B. .special { color: orange; }</li>
+              <li>C. li em { color: purple; }</li>
+            </ul>
+            <details>
+              <summary>정답 보기</summary>
+              <p class="answer">
+                정답: B — 점(.)으로 시작하면 클래스 선택자입니다.
+              </p>
+            </details>
+          </div>
+
+          <div class="quiz-card">
+            <p class="quiz-q">
+              <span class="qnum">Q2.</span>박스 모델에서 요소의 "안쪽" 여백을
+              담당하는 속성은?
+            </p>
+            <ul>
+              <li>A. margin</li>
+              <li>B. border</li>
+              <li>C. padding</li>
+            </ul>
+            <details>
+              <summary>정답 보기</summary>
+              <p class="answer">
+                정답: C — padding은 콘텐츠와 테두리 사이 안쪽 여백입니다.
+              </p>
+            </details>
+          </div>
+
+          <div class="quiz-card">
+            <p class="quiz-q">
+              <span class="qnum">Q3.</span>자식 요소들을 가로로 나란히
+              배치하려면 부모에 어떤 속성을 줘야 할까요?
+            </p>
+            <ul>
+              <li>A. display: block</li>
+              <li>B. display: flex</li>
+              <li>C. position: fixed</li>
+            </ul>
+            <details>
+              <summary>정답 보기</summary>
+              <p class="answer">
+                정답: B — display: flex를 주면 자식이 기본적으로 가로로 나란히
+                정렬됩니다.
+              </p>
+            </details>
+          </div>
+
+          <div class="quiz-card">
+            <p class="quiz-q">
+              <span class="qnum">Q4.</span>a 태그 가상클래스를 올바른 순서로
+              나열한 것은?
+            </p>
+            <ul>
+              <li>A. hover → link → active → visited</li>
+              <li>B. link → visited → hover → active</li>
+              <li>C. active → hover → visited → link</li>
+            </ul>
+            <details>
+              <summary>정답 보기</summary>
+              <p class="answer">
+                정답: B — Love HAte(러브하)로 외우면 순서가 헷갈리지 않아요.
+              </p>
+            </details>
+          </div>
+
+          <div class="quiz-card">
+            <p class="quiz-q">
+              <span class="qnum">Q5.</span>스크롤하다가 특정 지점에서 요소가
+              화면에 착 붙게 만드는 position 값은?
+            </p>
+            <ul>
+              <li>A. static</li>
+              <li>B. absolute</li>
+              <li>C. sticky</li>
+            </ul>
+            <details>
+              <summary>정답 보기</summary>
+              <p class="answer">
+                정답: C — sticky는 스크롤 중 지정 위치에서 고정됩니다. 이
+                페이지의 상단 네비게이션도 sticky입니다.
+              </p>
+            </details>
+          </div>
         </div>
       </div>
     </section>
+    <footer>
+      <p>
+        HTML &amp; CSS만으로 제작 · 분석 대상:
+        <a href="https://www.airbnb.co.kr" target="_blank" rel="noopener"
+          >Airbnb</a
+        >
+      </p>
+      <p>안치호</p>
+    </footer>
 
     <a href="#top" class="to-top" aria-label="맨 위로">↑</a>
   </body>

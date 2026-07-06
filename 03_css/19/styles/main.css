@@ -244,8 +244,8 @@ section.block {
 }
 .section-desc {
   color: var(--ink-soft);
-  margin-bottom: 34px;
-  max-width: 640px;
+  margin: 3rem 0;
+  /* max-width: 640px; */
 }
 .concept-grid {
   display: grid;
@@ -322,6 +322,98 @@ section.block {
 }
 .to-top:hover {
   background: var(--accent);
+}
+#quiz {
+  border-bottom: none;
+}
+
+.quiz-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.quiz-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.quiz-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: var(--accent);
+}
+.quiz-q {
+  font-weight: 700;
+  margin-bottom: 10px;
+  padding-left: 4px;
+}
+.quiz-q .qnum {
+  color: var(--accent-strong);
+  margin-right: 6px;
+}
+.quiz-card ul {
+  list-style: none;
+  margin: 0 0 12px 4px;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+.quiz-card ul li {
+  padding: 3px 0;
+}
+.quiz-card ul li::before {
+  content: "▸ ";
+  color: var(--accent);
+}
+
+.quiz-card summary {
+  cursor: pointer;
+  color: var(--accent-strong);
+  font-weight: 600;
+  font-size: 0.9rem;
+  list-style: none;
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--accent-soft);
+  border-radius: 20px;
+  transition: background 0.25s ease;
+}
+.quiz-card summary::-webkit-details-marker {
+  display: none;
+}
+.quiz-card summary:hover {
+  background: #e2d7f5;
+}
+.quiz-card .answer {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #f4f0e8;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px dashed var(--line);
+}
+
+footer {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+footer a:link,
+footer a:visited {
+  color: var(--accent-strong);
+  font-weight: 600;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }
 @media (max-width: 760px) {
   .concept-grid {

@@ -1,33 +1,62 @@
 :root {
-  --bg: #f4f4f9;
+  --bg: #f8fafc;
   --sidebar-bg: #ffffff;
   --card-bg: #ffffff;
-  --text: #222222;
-  --text-muted: #888888;
-  --border: #ececf2;
-  --primary: #4f46e5;
-  --primary-hover: #4338ca;
-  --primary-soft: rgba(79, 70, 229, 0.1);
-  --danger: #ef4444;
-  --shadow: rgba(0, 0, 0, 0.08);
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e4ecfc;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-soft: rgba(37, 99, 235, 0.08);
+  --on-primary: #ffffff;
+  --accent: #059669;
+  --accent-soft: rgba(5, 150, 105, 0.12);
+  --on-accent: #ffffff;
+  --danger: #dc2626;
+  --shadow: rgba(37, 99, 235, 0.06);
+
+  --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
 }
 
 body.dark {
-  --bg: #15151d;
-  --sidebar-bg: #1c1c27;
-  --card-bg: #22222e;
-  --text: #f0f0f5;
-  --text-muted: #9a9aa8;
-  --border: #313140;
-  --primary: #818cf8;
-  --primary-hover: #6366f1;
-  --primary-soft: rgba(129, 140, 248, 0.15);
-  --danger: #f87171;
-  --shadow: rgba(0, 0, 0, 0.4);
+  --bg: #0f172a;
+  --sidebar-bg: #1e293b;
+  --card-bg: #334155;
+  --text: #f8fafc;
+  --text-muted: #cbd5e1;
+  --border: #334155;
+  --primary: #3b82f6;
+  --primary-hover: #60a5fa;
+  --primary-soft: rgba(59, 130, 246, 0.16);
+  --on-primary: #0f172a;
+  --accent: #10b981;
+  --accent-soft: rgba(16, 185, 129, 0.18);
+  --on-accent: #0f172a;
+  --danger: #ef4444;
+  --shadow: rgba(0, 0, 0, 0.35);
 }
 
 * {
   box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.icon-svg {
+  display: inline-block;
+  vertical-align: middle;
+  stroke-width: 2;
+  color: currentColor;
+  pointer-events: none;
+  transition: transform 0.2s ease;
 }
 
 html,
@@ -36,13 +65,22 @@ body {
 }
 
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--bg);
   color: var(--text);
   margin: 0;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
 
 .app {
@@ -69,22 +107,33 @@ body {
 
 .brand h1 {
   font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   margin: 0;
 }
 
 .icon-btn {
   background: none;
   border: none;
-  font-size: 1.2rem;
-  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+  padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .icon-btn:hover {
   background-color: var(--border);
+}
+
+.icon-btn:active {
+  transform: scale(0.92);
 }
 
 .stats {
@@ -97,7 +146,7 @@ body {
 .stat {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   padding: 10px 4px;
   text-align: center;
 }
@@ -121,17 +170,22 @@ body {
 }
 
 .filter-btn {
+  display: flex;
+  align-items: center;
   text-align: left;
   padding: 10px 12px;
+  min-height: 44px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-muted);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
+  font-weight: 500;
   font-size: 0.9rem;
   transition:
     background-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .filter-btn:hover {
@@ -139,25 +193,36 @@ body {
   color: var(--text);
 }
 
+.filter-btn:active {
+  transform: scale(0.98);
+}
+
 .filter-btn.active {
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
+  font-weight: 600;
 }
 
 .clear-btn {
   margin-top: auto;
   padding: 10px 12px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: transparent;
   color: var(--danger);
   cursor: pointer;
   font-size: 0.85rem;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .clear-btn:hover:not(:disabled) {
   background: var(--primary-soft);
+}
+
+.clear-btn:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
 .clear-btn:disabled {
@@ -190,11 +255,13 @@ body {
 .calendar-section {
   background: var(--sidebar-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 14px 28px -10px var(--shadow);
 }
 
 .calendar-header {
@@ -208,6 +275,7 @@ body {
   font-size: 1.4rem;
   margin: 0;
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .calendar-weekdays {
@@ -244,14 +312,15 @@ body {
   border: none;
   background: transparent;
   color: var(--text);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .calendar-days button {
   cursor: pointer;
   transition:
     background-color 0.2s ease,
-    color 0.2s ease;
+    color 0.2s ease,
+    transform 0.15s ease;
   position: relative;
 }
 .calendar-days button.sunday {
@@ -264,45 +333,51 @@ body {
 /* 선택된 상태일 때는 글자색을 흰색으로 강제 유지 */
 .calendar-days button.selected.sunday,
 .calendar-days button.selected.saturday {
-  color: #fff;
+  color: var(--on-primary);
 }
 
 .calendar-days button:hover {
   background-color: var(--primary-soft);
 }
 
-/* 오늘 또는 선택된 날짜 강조 */
+.calendar-days button:active {
+  transform: scale(0.9);
+}
+
+/* 선택된 날짜 강조 */
 .calendar-days button.selected {
   background-color: var(--primary);
-  color: #fff;
-  font-weight: bold;
+  color: var(--on-primary);
+  font-weight: 700;
 }
 
 /* 할 일이 존재하는 날짜에 나타나는 점 표시 */
 .calendar-days button.has-todo::after {
   content: "";
   position: absolute;
-  bottom: 6px;
+  bottom: 5px;
   width: 5px;
   height: 5px;
-  background-color: var(--danger);
+  background-color: var(--accent);
   border-radius: 50%;
 }
 
 .calendar-days button.selected.has-todo::after {
-  background-color: #fff;
+  background-color: var(--on-primary);
 }
 
 /* 일정 목록 섹션 스타일 */
 .todo-section {
   background: var(--sidebar-bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 14px 28px -10px var(--shadow);
 }
 
 ul#todo-list {
@@ -322,30 +397,40 @@ ul#todo-list {
   min-width: 0;
   padding: 14px 16px;
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--card-bg);
   color: var(--text);
   font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 #todo-input:focus {
-  outline: 2px solid var(--primary);
-  outline-offset: 1px;
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
 #todo-form button {
   padding: 14px 24px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background: var(--primary);
-  color: #fff;
+  color: var(--on-primary);
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease;
 }
 
 #todo-form button:hover {
   background: var(--primary-hover);
+}
+
+#todo-form button:active {
+  transform: scale(0.97);
 }
 
 ul#todo-list {
@@ -365,9 +450,19 @@ ul#todo-list {
   margin-bottom: 8px;
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   gap: 10px;
   animation: fadeSlideIn 0.2s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.todo-item:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-soft);
+  box-shadow: 0 8px 20px -8px var(--shadow);
 }
 
 @keyframes fadeSlideIn {
@@ -420,15 +515,28 @@ ul#todo-list {
 .todo-actions button {
   background: none;
   border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 0.95rem;
-  padding: 6px 8px;
-  border-radius: 6px;
-  transition: background-color 0.2s ease;
+  padding: 8px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .todo-actions button:hover {
   background-color: var(--border);
+  color: var(--text);
+}
+
+.todo-actions button:active {
+  transform: scale(0.92);
 }
 
 .todo-item.editing .todo-actions {
@@ -440,7 +548,7 @@ ul#todo-list {
   min-width: 0;
   padding: 6px 8px;
   border: 1px solid var(--primary);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   background: var(--card-bg);
   color: var(--text);
   font-size: 0.95rem;
@@ -556,18 +664,25 @@ ul#todo-list {
 
 /* 오늘 버튼 스타일 */
 .today-btn {
-  padding: 4px 12px;
+  padding: 4px 14px;
   font-size: 0.85rem;
   font-weight: 600;
-  background-color: var(--primary-soft);
-  color: var(--primary);
+  background-color: var(--accent-soft);
+  color: var(--accent);
   border: 1px solid transparent;
-  border-radius: 6px;
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .today-btn:hover {
-  background-color: var(--primary);
-  color: #fff;
+  background-color: var(--accent);
+  color: var(--on-accent);
+}
+
+.today-btn:active {
+  transform: scale(0.96);
 }

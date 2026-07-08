@@ -41,6 +41,26 @@ body.dark {
   --shadow: rgba(0, 0, 0, 0.35);
 }
 
+/* 건너뛰기 링크 스타일 */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 var(--radius-sm) 0;
+}
+
+.skip-link:focus-visible {
+  top: 0;
+  outline: none;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -110,6 +130,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 0;
+  text-wrap: balance;
 }
 
 .icon-btn {
@@ -276,6 +297,7 @@ body {
   margin: 0;
   font-weight: 700;
   letter-spacing: -0.01em;
+  text-wrap: balance;
 }
 
 .calendar-weekdays {
@@ -556,6 +578,8 @@ ul#todo-list {
 
 .edit-input:focus {
   outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-soft);
 }
 
 .empty-state {

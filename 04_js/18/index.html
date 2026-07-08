@@ -2,12 +2,137 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
-    <!-- CSS 연결: head 안에 -->
-    <link rel="stylesheet" href="styles/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>바닐라 JS 투두앱</title>
+    <link rel="stylesheet" href="./styles/main.css" />
   </head>
   <body>
-    <!-- JS 연결: body 닫기 직전 -->
-    <script src="scripts/main.js"></script>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <h1>Todo</h1>
+          <button
+            type="button"
+            id="theme-toggle"
+            class="icon-btn"
+            aria-label="다크 모드 전환"
+            title="다크 모드 전환"
+          >
+            🌙
+          </button>
+        </div>
+
+        <dl class="stats">
+          <div class="stat">
+            <dt>전체</dt>
+            <dd id="stat-total">0</dd>
+          </div>
+          <div class="stat">
+            <dt>해야 할 일</dt>
+            <dd id="stat-active">0</dd>
+          </div>
+          <div class="stat">
+            <dt>완료</dt>
+            <dd id="stat-completed">0</dd>
+          </div>
+        </dl>
+
+        <nav class="todo-filters" role="tablist" aria-label="할 일 필터">
+          <button
+            type="button"
+            class="filter-btn active"
+            data-filter="all"
+            role="tab"
+            aria-selected="true"
+          >
+            전체
+          </button>
+          <button
+            type="button"
+            class="filter-btn"
+            data-filter="active"
+            role="tab"
+            aria-selected="false"
+          >
+            진행 중
+          </button>
+          <button
+            type="button"
+            class="filter-btn"
+            data-filter="completed"
+            role="tab"
+            aria-selected="false"
+          >
+            완료
+          </button>
+        </nav>
+
+        <button type="button" id="clear-completed" class="clear-btn">
+          완료된 항목 삭제
+        </button>
+      </aside>
+
+      <main class="main">
+        <form id="todo-form">
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="할 일을 입력하세요..."
+            maxlength="100"
+            autocomplete="off"
+            required
+          />
+          <button type="submit">추가</button>
+        </form>
+
+        <div class="main-body">
+          <section class="calendar-section">
+            <div class="calendar-header">
+              <button
+                type="button"
+                id="prev-month"
+                class="icon-btn"
+                aria-label="이전 달"
+              >
+                ◀
+              </button>
+              <div class="calendar-title-group">
+                <h2 id="calendar-title"></h2>
+                <button type="button" id="today-btn" class="today-btn">
+                  오늘
+                </button>
+              </div>
+              <button
+                type="button"
+                id="next-month"
+                class="icon-btn"
+                aria-label="다음 달"
+              >
+                ▶
+              </button>
+            </div>
+            <div class="calendar-weekdays">
+              <span>일</span><span>월</span><span>화</span><span>수</span
+              ><span>목</span><span>금</span><span>토</span>
+            </div>
+            <div id="calendar-days" class="calendar-days"></div>
+          </section>
+
+          <section class="todo-section">
+            <ul id="todo-list"></ul>
+
+            <p id="empty-state" class="empty-state" hidden>
+              표시할 할 일이 없어요 🎉
+            </p>
+
+            <footer class="todo-footer">
+              <span id="todo-count">0개 남음</span>
+            </footer>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <script src="./scripts/main.js"></script>
   </body>
 </html>

@@ -2,11 +2,14 @@ import { useState } from "react";
 import Greeting from "./components/Greeting";
 import Hello from "./components/Hello";
 import Profile from "./components/Profile";
+import Card from "./components/Card";
+import Alert from "./components/Alert";
 // import Link from "./components/Link";
 
 function App() {
   const [inputValue, setInputValue] = useState("");
-  const [displayName, setDisplayName] = useState("사용자");
+  const [displayName, setDisplayName] = useState("");
+  const [alertType, setAlertType] = useState("success");
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
@@ -16,7 +19,7 @@ function App() {
     setInputValue("");
   };
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-purple-500 via-purple-400 to-fuchsia-400 flex items-center justify-center p-6">
+    <div className="min-h-screen w-full bg-linear-to-br from-purple-500 via-purple-400 to-fuchsia-400 flex items-center justify-center p-6">
       <div className="w-full max-w-sm flex flex-col text-center gap-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
         <Hello />
         <form
@@ -37,8 +40,54 @@ function App() {
             이름 제출
           </button>
         </form>
-        <Greeting name={displayName} />
-        <Profile name={displayName} />
+        {displayName ? (
+          // 이름이 있을 때 두 컴포넌트를 fragment로 묶어서 동시에 렌더링
+          <>
+            <Greeting name={displayName} />
+            <Profile name={displayName} />
+          </>
+        ) : (
+          // 이름이 없을 때는 기존대로 카드만 렌더링
+          <Card
+            title="환영합니다"
+            desc="React로 만든 카드 컴포넌트입니다"
+            emoji="🎉"
+          />
+        )}
+        <div className="border-t border-white/20 pt-4 mt-2 flex flex-col gap-3">
+          <p className="text-xs font-semibold text-white/70">
+            알림 피드백 토글 테스트
+          </p>
+
+          {/* 상태 스위칭 버튼 삼총사 */}
+          <div className="flex justify-center gap-2">
+            <button
+              onClick={() => setAlertType("success")}
+              className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "success" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
+            >
+              성공
+            </button>
+            <button
+              onClick={() => setAlertType("error")}
+              className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "error" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
+            >
+              에러
+            </button>
+            <button
+              onClick={() => setAlertType("warning")}
+              className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "warning" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
+            >
+              경고
+            </button>
+          </div>
+
+          <div className="mt-1">
+            <Alert
+              type={alertType}
+              text={`${alertType.toUpperCase()} 메시지 발송 완료`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

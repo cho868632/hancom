@@ -41,13 +41,11 @@ function App() {
           </button>
         </form>
         {displayName ? (
-          // 이름이 있을 때 두 컴포넌트를 fragment로 묶어서 동시에 렌더링
           <>
             <Greeting name={displayName} />
             <Profile name={displayName} />
           </>
         ) : (
-          // 이름이 없을 때는 기존대로 카드만 렌더링
           <Card
             title="환영합니다"
             desc="React로 만든 카드 컴포넌트입니다"
@@ -58,8 +56,6 @@ function App() {
           <p className="text-xs font-semibold text-white/70">
             알림 피드백 토글 테스트
           </p>
-
-          {/* 상태 스위칭 버튼 삼총사 */}
           <div className="flex justify-center gap-2">
             <button
               onClick={() => setAlertType("success")}

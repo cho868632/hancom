@@ -1,90 +1,44 @@
 import { useState } from "react";
-import Greeting from "./components/Greeting";
-import Hello from "./components/Hello";
-import Profile from "./components/Profile";
-import Card from "./components/Card";
-import Alert from "./components/Alert";
+import MainCard from "./components/MainCard";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import Content from "./components/Content";
+import Footer from "./components/Footer";
 // import Link from "./components/Link";
 
 function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [displayName, setDisplayName] = useState("");
-  const [alertType, setAlertType] = useState("success");
-  const handleChange = (e) => {
-    setInputValue(e.target.value);
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setDisplayName(inputValue);
-    setInputValue("");
-  };
-  return (
-    <div className="min-h-screen w-full bg-linear-to-br from-purple-500 via-purple-400 to-fuchsia-400 flex items-center justify-center p-6">
-      <div className="w-full max-w-sm flex flex-col text-center gap-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
-        <Hello />
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col items-center gap-3"
-        >
-          <input
-            type="text"
-            placeholder="이름을 입력 해 주세요"
-            value={inputValue}
-            onChange={handleChange}
-            className="w-64 rounded-lg border-none bg-white/90 p-2 text-center text-black shadow-inner outline-none ring-2 ring-transparent focus:ring-purple-300"
-          />
-          <button
-            type="submit"
-            className="w-64 cursor-pointer rounded-lg bg-white px-4 py-2 font-bold text-purple-700 shadow transition-colors hover:bg-purple-100"
-          >
-            이름 제출
-          </button>
-        </form>
-        {displayName ? (
-          <>
-            <Greeting name={displayName} />
-            <Profile name={displayName} />
-          </>
-        ) : (
-          <Card
-            title="환영합니다"
-            desc="React로 만든 카드 컴포넌트입니다"
-            emoji="🎉"
-          />
-        )}
-        <div className="border-t border-white/20 pt-4 mt-2 flex flex-col gap-3">
-          <p className="text-xs font-semibold text-white/70">
-            알림 피드백 토글 테스트
-          </p>
-          <div className="flex justify-center gap-2">
-            <button
-              onClick={() => setAlertType("success")}
-              className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "success" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
-            >
-              성공
-            </button>
-            <button
-              onClick={() => setAlertType("error")}
-              className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "error" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
-            >
-              에러
-            </button>
-            <button
-              onClick={() => setAlertType("warning")}
-              className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "warning" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
-            >
-              경고
-            </button>
-          </div>
+  const [showMainCard, setShowMainCard] = useState(true);
 
-          <div className="mt-1">
-            <Alert
-              type={alertType}
-              text={`${alertType.toUpperCase()} 메시지 발송 완료`}
-            />
+  return (
+    <div
+      className={`min-h-screen w-full flex flex-col items-center gap-6 py-6 ${
+        showMainCard
+          ? "bg-linear-to-br from-purple-500 via-purple-400 to-fuchsia-400"
+          : "bg-slate-100"
+      }`}
+    >
+      <button
+        onClick={() => setShowMainCard(!showMainCard)}
+        className="cursor-pointer rounded-lg bg-white px-4 py-2 font-bold text-purple-700 shadow transition-colors hover:bg-purple-100"
+      >
+        {showMainCard ? "헤더 화면 보기" : "메인 카드 보기"}
+      </button>
+      {showMainCard ? (
+        <MainCard />
+      ) : (
+        <div className="w-full flex-1 flex flex-col bg-slate-50 shadow-2xl">
+          <div className="bg-white shadow-sm">
+            <Header />
+            <div className="flex justify-center border-t border-slate-100 py-2">
+              <Menu />
+            </div>
           </div>
+          <main className="flex-1 w-full max-w-6xl mx-auto px-6 py-10">
+            <Content />
+          </main>
+          <Footer />
         </div>
-      </div>
+      )}
     </div>
   );
 }

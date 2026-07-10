@@ -8,6 +8,8 @@ import Rating from "./Rating";
 import Tag from "./Tag";
 import SubmitButton from "./SubmitButton";
 import { Slider } from "@mui/material";
+import Weather from "./Weather";
+import User from "./User";
 
 function MainCard() {
   const [inputValue, setInputValue] = useState("");
@@ -28,6 +30,7 @@ function MainCard() {
 
   return (
     <div className=" mb-4 w-full max-w-sm flex flex-col text-center gap-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+      <Weather />
       <Hello />
       <form
         onSubmit={handleSubmit}
@@ -66,19 +69,19 @@ function MainCard() {
         <div className="flex justify-center gap-2">
           <button
             onClick={() => setAlertType("success")}
-            className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "success" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
+            className={`text-xs px-3 py-1.5 rounded-md font-medium transition-colors cursor-pointer ${alertType === "success" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
           >
             성공
           </button>
           <button
             onClick={() => setAlertType("error")}
-            className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "error" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
+            className={`text-xs px-3 py-1.5 rounded-md font-medium transition-colors cursor-pointer ${alertType === "error" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
           >
             에러
           </button>
           <button
             onClick={() => setAlertType("warning")}
-            className={`text-xs px-3 py-1.5 rounded-md font-medium transition-all cursor-pointer ${alertType === "warning" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
+            className={`text-xs px-3 py-1.5 rounded-md font-medium transition-colors cursor-pointer ${alertType === "warning" ? "bg-white text-purple-700 font-bold" : "bg-white/20 text-white hover:bg-white/30"}`}
           >
             경고
           </button>
@@ -109,24 +112,25 @@ function MainCard() {
         <div className="flex justify-center gap-2">
           <button
             onClick={() => setCount((c) => c - 1)}
-            className="w-10 h-10 rounded-lg bg-white/20 text-white text-lg font-bold cursor-pointer transition-all hover:bg-white/30"
+            className="w-11 h-10 rounded-lg bg-white/20 text-white text-lg font-bold cursor-pointer transition-colors hover:bg-white/30"
           >
             -
           </button>
           <button
             onClick={() => setCount(0)}
-            className="px-3 h-10 rounded-lg bg-white/20 text-white text-xs font-medium cursor-pointer transition-all hover:bg-white/30"
+            className="px-3 h-10 rounded-lg bg-white/20 text-white text-xs font-medium cursor-pointer transition-colors hover:bg-white/30"
           >
             reset
           </button>
           <button
             onClick={() => setCount((c) => c + 1)}
-            className="w-10 h-10 rounded-lg bg-white/20 text-white text-lg font-bold cursor-pointer shadow transition-all hover:bg-purple-100"
+            className="w-11 h-10 rounded-lg bg-white/20 text-white text-lg font-bold cursor-pointer shadow transition-colors hover:bg-purple-100"
           >
             +
           </button>
         </div>
       </div>
+      <User />
     </div>
   );
 }

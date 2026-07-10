@@ -1,0 +1,282 @@
+{
+  "0": {
+    "day": {
+      "description": "맑음",
+      "image": "http://openweathermap.org/img/wn/01d@2x.png"
+    },
+    "night": {
+      "description": "맑음",
+      "image": "http://openweathermap.org/img/wn/01n@2x.png"
+    }
+  },
+  "1": {
+    "day": {
+      "description": "대체로 맑음",
+      "image": "http://openweathermap.org/img/wn/01d@2x.png"
+    },
+    "night": {
+      "description": "대체로 맑음",
+      "image": "http://openweathermap.org/img/wn/01n@2x.png"
+    }
+  },
+  "2": {
+    "day": {
+      "description": "구름 조금",
+      "image": "http://openweathermap.org/img/wn/02d@2x.png"
+    },
+    "night": {
+      "description": "구름 조금",
+      "image": "http://openweathermap.org/img/wn/02n@2x.png"
+    }
+  },
+  "3": {
+    "day": {
+      "description": "흐림",
+      "image": "http://openweathermap.org/img/wn/03d@2x.png"
+    },
+    "night": {
+      "description": "흐림",
+      "image": "http://openweathermap.org/img/wn/03n@2x.png"
+    }
+  },
+  "45": {
+    "day": {
+      "description": "안개",
+      "image": "http://openweathermap.org/img/wn/50d@2x.png"
+    },
+    "night": {
+      "description": "안개",
+      "image": "http://openweathermap.org/img/wn/50n@2x.png"
+    }
+  },
+  "48": {
+    "day": {
+      "description": "얼어붙은 안개",
+      "image": "http://openweathermap.org/img/wn/50d@2x.png"
+    },
+    "night": {
+      "description": "얼어붙은 안개",
+      "image": "http://openweathermap.org/img/wn/50n@2x.png"
+    }
+  },
+  "51": {
+    "day": {
+      "description": "약한 이슬비",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "약한 이슬비",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "53": {
+    "day": {
+      "description": "이슬비",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "이슬비",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "55": {
+    "day": {
+      "description": "강한 이슬비",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "강한 이슬비",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "56": {
+    "day": {
+      "description": "약하게 어는 이슬비",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "약하게 어는 이슬비",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "57": {
+    "day": {
+      "description": "어는 이슬비",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "어는 이슬비",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "61": {
+    "day": {
+      "description": "약한 비",
+      "image": "http://openweathermap.org/img/wn/10d@2x.png"
+    },
+    "night": {
+      "description": "약한 비",
+      "image": "http://openweathermap.org/img/wn/10n@2x.png"
+    }
+  },
+  "63": {
+    "day": {
+      "description": "비",
+      "image": "http://openweathermap.org/img/wn/10d@2x.png"
+    },
+    "night": {
+      "description": "비",
+      "image": "http://openweathermap.org/img/wn/10n@2x.png"
+    }
+  },
+  "65": {
+    "day": {
+      "description": "강한 비",
+      "image": "http://openweathermap.org/img/wn/10d@2x.png"
+    },
+    "night": {
+      "description": "강한 비",
+      "image": "http://openweathermap.org/img/wn/10n@2x.png"
+    }
+  },
+  "66": {
+    "day": {
+      "description": "약하게 어는 비",
+      "image": "http://openweathermap.org/img/wn/10d@2x.png"
+    },
+    "night": {
+      "description": "약하게 어는 비",
+      "image": "http://openweathermap.org/img/wn/10n@2x.png"
+    }
+  },
+  "67": {
+    "day": {
+      "description": "어는 비",
+      "image": "http://openweathermap.org/img/wn/10d@2x.png"
+    },
+    "night": {
+      "description": "어는 비",
+      "image": "http://openweathermap.org/img/wn/10n@2x.png"
+    }
+  },
+  "71": {
+    "day": {
+      "description": "약한 눈",
+      "image": "http://openweathermap.org/img/wn/13d@2x.png"
+    },
+    "night": {
+      "description": "약한 눈",
+      "image": "http://openweathermap.org/img/wn/13n@2x.png"
+    }
+  },
+  "73": {
+    "day": {
+      "description": "눈",
+      "image": "http://openweathermap.org/img/wn/13d@2x.png"
+    },
+    "night": {
+      "description": "눈",
+      "image": "http://openweathermap.org/img/wn/13n@2x.png"
+    }
+  },
+  "75": {
+    "day": {
+      "description": "강한 눈",
+      "image": "http://openweathermap.org/img/wn/13d@2x.png"
+    },
+    "night": {
+      "description": "강한 눈",
+      "image": "http://openweathermap.org/img/wn/13n@2x.png"
+    }
+  },
+  "77": {
+    "day": {
+      "description": "싸락눈",
+      "image": "http://openweathermap.org/img/wn/13d@2x.png"
+    },
+    "night": {
+      "description": "싸락눈",
+      "image": "http://openweathermap.org/img/wn/13n@2x.png"
+    }
+  },
+  "80": {
+    "day": {
+      "description": "약한 소나기",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "약한 소나기",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "81": {
+    "day": {
+      "description": "소나기",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "소나기",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "82": {
+    "day": {
+      "description": "강한 소나기",
+      "image": "http://openweathermap.org/img/wn/09d@2x.png"
+    },
+    "night": {
+      "description": "강한 소나기",
+      "image": "http://openweathermap.org/img/wn/09n@2x.png"
+    }
+  },
+  "85": {
+    "day": {
+      "description": "약한 소낙눈",
+      "image": "http://openweathermap.org/img/wn/13d@2x.png"
+    },
+    "night": {
+      "description": "약한 소낙눈",
+      "image": "http://openweathermap.org/img/wn/13n@2x.png"
+    }
+  },
+  "86": {
+    "day": {
+      "description": "소낙눈",
+      "image": "http://openweathermap.org/img/wn/13d@2x.png"
+    },
+    "night": {
+      "description": "소낙눈",
+      "image": "http://openweathermap.org/img/wn/13n@2x.png"
+    }
+  },
+  "95": {
+    "day": {
+      "description": "뇌우",
+      "image": "http://openweathermap.org/img/wn/11d@2x.png"
+    },
+    "night": {
+      "description": "뇌우",
+      "image": "http://openweathermap.org/img/wn/11n@2x.png"
+    }
+  },
+  "96": {
+    "day": {
+      "description": "우박을 동반한 약한 뇌우",
+      "image": "http://openweathermap.org/img/wn/11d@2x.png"
+    },
+    "night": {
+      "description": "우박을 동반한 약한 뇌우",
+      "image": "http://openweathermap.org/img/wn/11n@2x.png"
+    }
+  },
+  "99": {
+    "day": {
+      "description": "우박을 동반한 뇌우",
+      "image": "http://openweathermap.org/img/wn/11d@2x.png"
+    },
+    "night": {
+      "description": "우박을 동반한 뇌우",
+      "image": "http://openweathermap.org/img/wn/11n@2x.png"
+    }
+  }
+}

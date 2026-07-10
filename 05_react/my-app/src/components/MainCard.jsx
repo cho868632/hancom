@@ -15,7 +15,7 @@ function MainCard() {
   const [alertType, setAlertType] = useState("success");
   const [count, setCount] = useState(0);
 
-  const list = ["집에", "가고", "싶다"];
+  const list = ["밥", "뭐", "먹지"];
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -27,7 +27,7 @@ function MainCard() {
   };
 
   return (
-    <div className="w-full max-w-sm flex flex-col text-center gap-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
+    <div className=" mb-4 w-full max-w-sm flex flex-col text-center gap-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-xl">
       <Hello />
       <form
         onSubmit={handleSubmit}

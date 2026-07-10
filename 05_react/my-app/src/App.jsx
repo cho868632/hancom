@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen w-full flex flex-col items-center gap-6 py-6 ${
+      className={`min-h-screen w-full flex flex-col items-center gap-6 pt-6 ${
         showMainCard
           ? "bg-linear-to-br from-purple-500 via-purple-400 to-fuchsia-400"
           : "bg-slate-100"

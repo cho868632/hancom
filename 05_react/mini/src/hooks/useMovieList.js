@@ -10,7 +10,11 @@ export function useMovieList(mbtiType) {
     queryFn: async () => {
       const pages = await Promise.all(
         [1, 2, 3].map((page) =>
-          discoverMovies({ genreIds: profile.genreIds, sortBy: "popularity.desc", page }),
+          discoverMovies({
+            genreIds: profile.genreIds,
+            sortBy: "popularity.desc",
+            page,
+          }),
         ),
       );
       return pages.flatMap((p) => p.results ?? []);
@@ -19,7 +23,7 @@ export function useMovieList(mbtiType) {
     select: (results) =>
       results
         .filter((m) => m.overview?.trim())
-        .sort((a, b) => (b.release_date ?? "").localeCompare(a.release_date ?? ""))
+        // .sort((a, b) => (b.release_date ?? "").localeCompare(a.release_date ?? ""))
         .slice(0, 12),
   });
 }

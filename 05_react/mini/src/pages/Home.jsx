@@ -1,6 +1,8 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { QUESTIONS } from "../constants/questions";
 import { MOVIE_TYPES } from "../constants/mbtiMap";
+import { useQuizStore } from "../store/useQuizStore";
 
 const NICKNAMES = Object.values(MOVIE_TYPES).map(
   (t) => `${t.emoji} ${t.nickname}`,
@@ -8,6 +10,12 @@ const NICKNAMES = Object.values(MOVIE_TYPES).map(
 
 const Home = () => {
   const nav = useNavigate();
+  const reset = useQuizStore((s) => s.reset);
+
+  useEffect(() => {
+    reset();
+  }, [reset]);
+
   const start = () => {
     nav("/quiz");
   };

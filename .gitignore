@@ -1,5 +1,5 @@
 02_html/form.html
+03_css/package.json
+03_css/package-lock.json
 *node_modules
-*package.json
-*package-lock.json
 *.stylelintrc.json

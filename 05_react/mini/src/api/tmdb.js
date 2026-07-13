@@ -23,7 +23,7 @@ async function tmdbFetch(path, params = {}) {
 
 export function discoverMovies({ genreIds = [], sortBy = "popularity.desc", page = 1 }) {
   return tmdbFetch("/discover/movie", {
-    with_genres: genreIds.join(","),
+    with_genres: genreIds.join("|"),
     sort_by: sortBy,
     include_adult: false,
     page,

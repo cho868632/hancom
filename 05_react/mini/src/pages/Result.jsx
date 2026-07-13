@@ -22,7 +22,7 @@ const Result = () => {
 
   const retry = () => {
     reset();
-    navigate("/quiz");
+    navigate("/");
   };
 
   if (!profile) {

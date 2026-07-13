@@ -25,7 +25,7 @@ const ResultSummary = ({ profile }) => {
         <p className="mt-2 text-sm leading-relaxed text-fog">
           {profile.type} 취향 →{" "}
           <span className="text-ink">{genreNames.join(", ")}</span> 장르 위주로
-          매칭, 최신 개봉작 우선으로 정렬
+          매칭, 인기순으로 정렬
         </p>
         <p className="mt-2 text-sm text-fog">
           찰떡 궁합:{" "}

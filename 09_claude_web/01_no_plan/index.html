@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>계산기</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  .calculator {
+    width: 320px;
+    background: #1c1c2b;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  }
+  .display {
+    background: #101018;
+    border-radius: 12px;
+    padding: 20px 16px;
+    margin-bottom: 16px;
+    text-align: right;
+    overflow: hidden;
+  }
+  .display .prev {
+    color: #888;
+    font-size: 16px;
+    min-height: 20px;
+  }
+  .display .curr {
+    color: #fff;
+    font-size: 36px;
+    font-weight: 500;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  button {
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    padding: 18px 0;
+    cursor: pointer;
+    background: #2e2e42;
+    color: #fff;
+    transition: background 0.15s, transform 0.05s;
+  }
+  button:active { transform: scale(0.95); }
+  button:hover { background: #3a3a54; }
+  button.op {
+    background: #ff9f0a;
+    color: #fff;
+  }
+  button.op:hover { background: #ffb340; }
+  button.func {
+    background: #4a4a5e;
+  }
+  button.func:hover { background: #5a5a72;}
+  button.equal {
+    background: #ff9f0a;
+    grid-column: span 2;
+  }
+  button.equal:hover { background: #ffb340; }
+  button.zero {
+    grid-column: span 2;
+  }
+</style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display">
+      <div class="prev" id="prev"></div>
+      <div class="curr" id="curr">0</div>
+    </div>
+    <div class="buttons">
+      <button class="func" data-action="clear">C</button>
+      <button class="func" data-action="sign">+/-</button>
+      <button class="func" data-action="percent">%</button>
+      <button class="op" data-action="divide">÷</button>
+
+      <button data-num="7">7</button>
+      <button data-num="8">8</button>
+      <button data-num="9">9</button>
+      <button class="op" data-action="multiply">×</button>
+
+      <button data-num="4">4</button>
+      <button data-num="5">5</button>
+      <button data-num="6">6</button>
+      <button class="op" data-action="subtract">−</button>
+
+      <button data-num="1">1</button>
+      <button data-num="2">2</button>
+      <button data-num="3">3</button>
+      <button class="op" data-action="add">+</button>
+
+      <button class="zero" data-num="0">0</button>
+      <button data-action="decimal">.</button>
+      <button class="equal" data-action="equals">=</button>
+    </div>
+  </div>
+
+<script>
+  const currEl = document.getElementById('curr');
+  const prevEl = document.getElementById('prev');
+
+  let curr = '0';
+  let prev = '';
+  let operator = null;
+  let resetNext = false;
+
+  function updateDisplay() {
+    currEl.textContent = curr;
+    prevEl.textContent = prev ? `${prev} ${opSymbol(operator)}` : '';
+  }
+
+  function opSymbol(op) {
+    return { add: '+', subtract: '−', multiply: '×', divide: '÷' }[op] || '';
+  }
+
+  function inputNum(n) {
+    if (resetNext) {
+      curr = n;
+      resetNext = false;
+    } else {
+      curr = curr === '0' ? n : curr + n;
+    }
+  }
+
+  function inputDecimal() {
+    if (resetNext) {
+      curr = '0.';
+      resetNext = false;
+      return;
+    }
+    if (!curr.includes('.')) curr += '.';
+  }
+
+  function chooseOperator(op) {
+    if (operator && !resetNext) {
+      compute();
+    }
+    prev = curr;
+    operator = op;
+    resetNext = true;
+  }
+
+  function compute() {
+    const a = parseFloat(prev);
+    const b = parseFloat(curr);
+    if (isNaN(a) || isNaN(b)) return;
+    let result;
+    switch (operator) {
+      case 'add': result = a + b; break;
+      case 'subtract': result = a - b; break;
+      case 'multiply': result = a * b; break;
+      case 'divide': result = b === 0 ? NaN : a / b; break;
+      default: return;
+    }
+    curr = trimResult(result);
+    operator = null;
+    prev = '';
+  }
+
+  function trimResult(n) {
+    if (isNaN(n)) return 'Error';
+    if (!isFinite(n)) return 'Error';
+    let s = n.toString();
+    if (s.length > 14) s = parseFloat(n.toPrecision(10)).toString();
+    return s;
+  }
+
+  function clearAll() {
+    curr = '0';
+    prev = '';
+    operator = null;
+    resetNext = false;
+  }
+
+  function toggleSign() {
+    if (curr === '0') return;
+    curr = curr.startsWith('-') ? curr.slice(1) : '-' + curr;
+  }
+
+  function percent() {
+    curr = trimResult(parseFloat(curr) / 100);
+  }
+
+  document.querySelector('.buttons').addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+
+    if (btn.dataset.num !== undefined) {
+      inputNum(btn.dataset.num);
+    } else {
+      switch (btn.dataset.action) {
+        case 'clear': clearAll(); break;
+        case 'sign': toggleSign(); break;
+        case 'percent': percent(); break;
+        case 'decimal': inputDecimal(); break;
+        case 'equals':
+          if (operator) compute();
+          resetNext = true;
+          break;
+        case 'add':
+        case 'subtract':
+        case 'multiply':
+        case 'divide':
+          chooseOperator(btn.dataset.action);
+          break;
+      }
+    }
+    updateDisplay();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key >= '0' && e.key <= '9') inputNum(e.key);
+    else if (e.key === '.') inputDecimal();
+    else if (e.key === '+') chooseOperator('add');
+    else if (e.key === '-') chooseOperator('subtract');
+    else if (e.key === '*') chooseOperator('multiply');
+    else if (e.key === '/') { e.preventDefault(); chooseOperator('divide'); }
+    else if (e.key === 'Enter' || e.key === '=') {
+      if (operator) compute();
+      resetNext = true;
+    }
+    else if (e.key === 'Escape') clearAll();
+    else if (e.key === 'Backspace') {
+      curr = curr.length > 1 ? curr.slice(0, -1) : '0';
+    }
+    else return;
+    updateDisplay();
+  });
+</script>
+</body>
+</html>

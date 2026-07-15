@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>가산기 — 계산기</title>
+<meta name="description" content="종이 테이프에 계산 기록을 찍어내는 사무용 가산기 스타일 계산기" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ledger-bg" aria-hidden="true"></div>
+
+  <main class="machine-wrap">
+    <section class="tape-unit" aria-labelledby="tapeHeading">
+      <div class="tape-roller" aria-hidden="true">
+        <span class="roller-cap"></span>
+        <span class="roller-bar"></span>
+        <span class="roller-cap"></span>
+      </div>
+
+      <h2 id="tapeHeading" class="sr-only">계산 기록 테이프</h2>
+
+      <div class="tape-window" id="tapeWindow">
+        <p class="tape-placeholder" id="tapeEmpty">테이프가 비어 있습니다</p>
+        <ul class="tape-list" id="tapeList"></ul>
+      </div>
+
+      <div class="tape-tear" aria-hidden="true"></div>
+
+      <button type="button" class="tear-btn" id="tearTape" aria-label="테이프 찢어내기 — 계산 기록 지우기">
+        테이프 찢기
+      </button>
+    </section>
+
+    <section class="machine-body" aria-label="계산기 본체">
+      <div class="brand-plate">
+        <span class="brand-name">LEDGER · MODEL 100</span>
+        <span class="brand-tag">사무용 가산기</span>
+      </div>
+
+      <div class="readout">
+        <div class="readout-expression" id="expression"></div>
+        <div class="readout-value" id="result" aria-live="polite">0</div>
+      </div>
+
+      <div class="keypad">
+        <button type="button" class="key key-util" data-key="ac">AC</button>
+        <button type="button" class="key key-util" data-key="back" aria-label="한 글자 지우기">⌫</button>
+        <button type="button" class="key key-util" data-key="percent">%</button>
+        <button type="button" class="key key-op" data-key="/">÷</button>
+
+        <button type="button" class="key" data-key="7">7</button>
+        <button type="button" class="key" data-key="8">8</button>
+        <button type="button" class="key" data-key="9">9</button>
+        <button type="button" class="key key-op" data-key="*">×</button>
+
+        <button type="button" class="key" data-key="4">4</button>
+        <button type="button" class="key" data-key="5">5</button>
+        <button type="button" class="key" data-key="6">6</button>
+        <button type="button" class="key key-op" data-key="-">−</button>
+
+        <button type="button" class="key" data-key="1">1</button>
+        <button type="button" class="key" data-key="2">2</button>
+        <button type="button" class="key" data-key="3">3</button>
+        <button type="button" class="key key-op" data-key="+">+</button>
+
+        <button type="button" class="key" data-key="sign" aria-label="부호 전환">±</button>
+        <button type="button" class="key key-zero" data-key="0">0</button>
+        <button type="button" class="key" data-key=".">.</button>
+
+        <button type="button" class="key key-equals" id="equalsBtn" data-key="=" aria-label="계산 — 합계 찍기">
+          =
+        </button>
+      </div>
+    </section>
+
+    <p class="hint">숫자 키패드로 입력하거나 버튼을 클릭하세요</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Calculator</title>
+<meta name="description" content="Apple 디자인 시스템을 따른 사칙연산 계산기" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <h1 class="app-title type-tagline">Calculator</h1>
+
+    <section class="calculator" aria-label="계산기">
+      <div class="calculator__display">
+        <div class="calculator__expression type-caption" id="expression" aria-hidden="true"></div>
+        <div
+          class="calculator__result type-hero-display"
+          id="result"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >0</div>
+      </div>
+
+      <div class="calculator__keypad" role="group" aria-label="계산기 키패드">
+        <button type="button" class="key key--utility" data-key="AC">AC</button>
+        <button type="button" class="key key--utility" data-key="back" aria-label="한 글자 지우기">⌫</button>
+        <button type="button" class="key key--operator" data-key="divide" aria-label="나누기">÷</button>
+        <button type="button" class="key key--operator" data-key="multiply" aria-label="곱하기">×</button>
+
+        <button type="button" class="key key--digit" data-key="7">7</button>
+        <button type="button" class="key key--digit" data-key="8">8</button>
+        <button type="button" class="key key--digit" data-key="9">9</button>
+        <button type="button" class="key key--operator" data-key="subtract" aria-label="빼기">−</button>
+
+        <button type="button" class="key key--digit" data-key="4">4</button>
+        <button type="button" class="key key--digit" data-key="5">5</button>
+        <button type="button" class="key key--digit" data-key="6">6</button>
+        <button type="button" class="key key--operator" data-key="add" aria-label="더하기">+</button>
+
+        <button type="button" class="key key--digit" data-key="1">1</button>
+        <button type="button" class="key key--digit" data-key="2">2</button>
+        <button type="button" class="key key--digit" data-key="3">3</button>
+        <button
+          type="button"
+          class="key key--equals"
+          id="equalsBtn"
+          data-key="equals"
+          aria-label="계산"
+          style="grid-row: span 2"
+        >=</button>
+
+        <button type="button" class="key key--digit key--zero" data-key="0" style="grid-column: span 2">0</button>
+        <button type="button" class="key key--digit" data-key="decimal" aria-label="소수점">.</button>
+      </div>
+    </section>
+
+    <p class="hint type-caption">숫자 키패드로 입력하거나 버튼을 클릭하세요</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

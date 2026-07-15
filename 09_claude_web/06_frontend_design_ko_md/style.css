@@ -1,0 +1,279 @@
+/* Toss Design System tokens — see toss.md */
+:root {
+  /* Brand */
+  --blue-500: oklch(0.624 0.176 254);
+  --blue-600: oklch(0.522 0.176 257);
+  --blue-50: oklch(0.965 0.020 250);
+
+  /* Greyscale */
+  --grey-900: oklch(0.234 0.030 254);
+  --grey-800: oklch(0.342 0.030 253);
+  --grey-700: oklch(0.452 0.028 253);
+  --grey-600: oklch(0.555 0.022 253);
+  --grey-500: oklch(0.652 0.020 252);
+  --grey-400: oklch(0.752 0.016 251);
+  --grey-300: oklch(0.840 0.012 248);
+  --grey-200: oklch(0.913 0.008 247);
+  --grey-100: oklch(0.957 0.005 247);
+  --grey-50: oklch(0.978 0.003 247);
+  --white: oklch(1 0 0);
+
+  /* Semantic */
+  --red-500: oklch(0.628 0.218 22);
+  --navy-900: oklch(0.155 0.060 261);
+
+  /* Alpha */
+  --fg-tertiary: oklch(0.155 0.060 261 / 0.58);
+  --line-subtle: oklch(0 0 0 / 0.08);
+  --overlay-scrim: oklch(0 0 0 / 0.56);
+
+  /* Semantic alias */
+  --fill-brand: var(--blue-500);
+  --fill-secondary: var(--grey-100);
+  --fill-danger: var(--red-500);
+  --text-primary: var(--grey-900);
+  --text-secondary: var(--grey-700);
+  --text-tertiary: var(--fg-tertiary);
+  --text-brand: var(--blue-500);
+  --text-alt: var(--white);
+  --border-secondary: var(--grey-200);
+
+  /* Radius */
+  --radius-l: 14px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  /* Elevation */
+  --shadow-2: 0 4px 12px oklch(0.155 0.060 261 / 0.06), 0 1px 2px oklch(0.155 0.060 261 / 0.04);
+  --shadow-toast: 0 8px 24px oklch(0.155 0.060 261 / 0.16);
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+
+  /* Spacing */
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--grey-50);
+  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    "SF Pro Text", "SF Pro", "Apple SD Gothic Neo", "Noto Sans KR", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app {
+  position: relative;
+  max-width: 420px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 641px) {
+  .app {
+    min-height: calc(100dvh - 48px);
+    margin: 24px auto;
+    border-radius: 32px;
+    box-shadow: var(--shadow-2);
+    overflow: hidden;
+  }
+}
+
+/* Top app bar */
+.top-bar {
+  height: 56px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+}
+
+.top-bar__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.icon-button {
+  all: unset;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease);
+}
+
+.icon-button:active {
+  background: var(--fill-secondary);
+}
+
+/* Display */
+.display {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0 var(--space-6) var(--space-6);
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.display__expression {
+  font-size: 15px;
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.display__result {
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: clip;
+  transition: font-size var(--dur-base) var(--ease);
+}
+
+.display__result.is-long {
+  font-size: 40px;
+}
+
+.display__result.is-longer {
+  font-size: 30px;
+}
+
+.display__result.is-error {
+  color: var(--fill-danger);
+}
+
+/* Keypad */
+.keypad {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom));
+}
+
+.key {
+  all: unset;
+  box-sizing: border-box;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 26px;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+  transition: filter var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease),
+    background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.key:active {
+  transform: scale(0.96);
+  filter: brightness(0.94);
+}
+
+.key--number {
+  background: var(--fill-secondary);
+  color: var(--text-primary);
+}
+
+.key--function {
+  background: var(--grey-200);
+  color: var(--text-primary);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.key--operator {
+  background: var(--blue-50);
+  color: var(--text-brand);
+}
+
+.key--operator.is-active {
+  background: var(--fill-brand);
+  color: var(--text-alt);
+}
+
+.key--equals {
+  background: var(--fill-brand);
+  color: var(--text-alt);
+}
+
+.key--equals:active {
+  filter: brightness(0.9);
+}
+
+.key--zero {
+  grid-column: span 2;
+  aspect-ratio: auto;
+  justify-content: flex-start;
+  padding-left: 32px;
+}
+
+/* Toast */
+.toast {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translate(-50%, 8px);
+  background: var(--grey-900);
+  color: var(--text-alt);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: var(--radius-l);
+  box-shadow: var(--shadow-toast);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+  z-index: 10;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

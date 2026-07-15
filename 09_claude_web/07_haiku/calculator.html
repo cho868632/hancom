@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>계산기 - 토스 디자인</title>
+  <style>
+    :root {
+      /* Color tokens — Toss system */
+      --tds-blue-500: #3182F6;
+      --tds-blue-600: #2563EB;
+      --tds-grey-900: #1a1a1a;
+      --tds-grey-800: #333333;
+      --tds-grey-700: #666666;
+      --tds-grey-200: #e5e5e5;
+      --tds-grey-100: #f5f5f5;
+      --tds-grey-50: #fafafa;
+      --tds-white: #ffffff;
+
+      /* Type scale */
+      --size-display: 3.5rem;
+      --size-h2: 1.5rem;
+      --size-body: 1rem;
+      --size-label: 0.875rem;
+
+      --weight-bold: 700;
+      --weight-semibold: 600;
+      --weight-regular: 400;
+
+      /* Spacing */
+      --space-4: 0.25rem;
+      --space-8: 0.5rem;
+      --space-12: 0.75rem;
+      --space-16: 1rem;
+      --space-24: 1.5rem;
+      --space-32: 2rem;
+
+      /* Radius */
+      --radius-m: 0.75rem;
+      --radius-l: 1rem;
+
+      /* Motion */
+      --duration: 200ms;
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --tds-grey-900: #f5f5f5;
+        --tds-grey-800: #e5e5e5;
+        --tds-grey-700: #999999;
+        --tds-grey-200: #333333;
+        --tds-grey-100: #222222;
+        --tds-grey-50: #1a1a1a;
+        --tds-white: #0f0f0f;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --tds-grey-900: #f5f5f5;
+      --tds-grey-800: #e5e5e5;
+      --tds-grey-700: #999999;
+      --tds-grey-200: #333333;
+      --tds-grey-100: #222222;
+      --tds-grey-50: #1a1a1a;
+      --tds-white: #0f0f0f;
+    }
+
+    :root[data-theme="light"] {
+      --tds-grey-900: #1a1a1a;
+      --tds-grey-800: #333333;
+      --tds-grey-700: #666666;
+      --tds-grey-200: #e5e5e5;
+      --tds-grey-100: #f5f5f5;
+      --tds-grey-50: #fafafa;
+      --tds-white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--tds-white);
+      color: var(--tds-grey-900);
+      line-height: 1.5;
+      transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease);
+    }
+
+    .calculator {
+      max-width: 390px;
+      margin: 0 auto;
+      padding: var(--space-16);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      margin-bottom: var(--space-32);
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: var(--size-h2);
+      font-weight: var(--weight-semibold);
+      color: var(--tds-grey-900);
+      margin-bottom: var(--space-8);
+    }
+
+    .display-card {
+      background-color: var(--tds-grey-100);
+      border: 1px solid var(--tds-grey-200);
+      border-radius: var(--radius-l);
+      padding: var(--space-24);
+      margin-bottom: var(--space-24);
+      text-align: right;
+    }
+
+    .display {
+      font-size: var(--size-display);
+      font-weight: var(--weight-bold);
+      color: var(--tds-blue-500);
+      font-feature-settings: "tnum" 1;
+      word-wrap: break-word;
+      word-break: break-all;
+      line-height: 1.1;
+      min-height: 4rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .display.empty {
+      color: var(--tds-grey-700);
+    }
+
+    .display.error {
+      color: #d32f2f;
+      font-size: var(--size-h2);
+    }
+
+    .operation-indicator {
+      font-size: var(--size-label);
+      color: var(--tds-grey-700);
+      margin-bottom: var(--space-8);
+      text-align: right;
+      min-height: 1.25rem;
+    }
+
+    .button-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-8);
+      margin-bottom: var(--space-32);
+    }
+
+    button {
+      min-height: 3rem;
+      min-width: 3rem;
+      border: none;
+      border-radius: var(--radius-m);
+      font-size: var(--size-body);
+      font-weight: var(--weight-semibold);
+      cursor: pointer;
+      transition: all var(--duration) var(--ease);
+      font-family: inherit;
+    }
+
+    button:active {
+      opacity: 0.8;
+      transform: scale(0.98);
+    }
+
+    button:focus {
+      outline: 2px solid var(--tds-blue-500);
+      outline-offset: 2px;
+    }
+
+    .btn-number,
+    .btn-decimal {
+      background-color: var(--tds-grey-100);
+      color: var(--tds-grey-900);
+      border: 1px solid var(--tds-grey-200);
+    }
+
+    .btn-number:hover,
+    .btn-decimal:hover {
+      background-color: var(--tds-grey-200);
+    }
+
+    .btn-operation {
+      background-color: var(--tds-grey-100);
+      color: var(--tds-blue-500);
+      border: 1px solid var(--tds-grey-200);
+      font-weight: var(--weight-bold);
+    }
+
+    .btn-operation:hover {
+      background-color: var(--tds-blue-500);
+      color: var(--tds-white);
+    }
+
+    .btn-clear {
+      background-color: var(--tds-grey-100);
+      color: var(--tds-grey-900);
+      border: 1px solid var(--tds-grey-200);
+      grid-column: span 2;
+    }
+
+    .btn-clear:hover {
+      background-color: var(--tds-grey-200);
+    }
+
+    .btn-delete {
+      background-color: var(--tds-grey-100);
+      color: var(--tds-grey-900);
+      border: 1px solid var(--tds-grey-200);
+      grid-column: span 2;
+    }
+
+    .btn-delete:hover {
+      background-color: var(--tds-grey-200);
+    }
+
+    .history {
+      background-color: var(--tds-grey-50);
+      border: 1px solid var(--tds-grey-200);
+      border-radius: var(--radius-m);
+      padding: var(--space-12);
+      margin-bottom: var(--space-24);
+      max-height: 150px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .history-label {
+      font-size: var(--size-label);
+      color: var(--tds-grey-700);
+      margin-bottom: var(--space-8);
+      font-weight: var(--weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .history-item {
+      font-size: var(--size-label);
+      color: var(--tds-grey-700);
+      padding: var(--space-8) 0;
+      border-bottom: 1px solid var(--tds-grey-200);
+      font-feature-settings: "tnum" 1;
+    }
+
+    .history-item:last-child {
+      border-bottom: none;
+    }
+
+    .history-empty {
+      font-size: var(--size-label);
+      color: var(--tds-grey-700);
+      text-align: center;
+      padding: var(--space-16);
+    }
+
+    .bottom-cta {
+      position: sticky;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: var(--space-16);
+      margin: 0 calc(-1 * var(--space-16)) calc(-1 * var(--space-16));
+      background: linear-gradient(to bottom, transparent, var(--tds-white) 40%);
+    }
+
+    .btn-equals {
+      width: 100%;
+      height: 3.5rem;
+      background-color: var(--tds-blue-500);
+      color: var(--tds-white);
+      border: none;
+      border-radius: var(--radius-m);
+      font-size: var(--size-body);
+      font-weight: var(--weight-bold);
+      cursor: pointer;
+      transition: all var(--duration) var(--ease);
+    }
+
+    .btn-equals:hover {
+      background-color: var(--tds-blue-600);
+    }
+
+    .btn-equals:active {
+      opacity: 0.8;
+      transform: scale(0.98);
+    }
+
+    .btn-equals:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-equals:focus {
+      outline: 2px solid var(--tds-blue-500);
+      outline-offset: 2px;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: var(--space-16);
+      right: var(--space-16);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: 1px solid var(--tds-grey-200);
+      background-color: var(--tds-grey-100);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      transition: all var(--duration) var(--ease);
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--tds-grey-200);
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="테마 전환">🌙</button>
+
+  <div class="calculator">
+    <div class="header">
+      <h1>계산기</h1>
+    </div>
+
+    <div class="display-card">
+      <div class="operation-indicator" id="operationIndicator"></div>
+      <div class="display empty" id="display">0</div>
+    </div>
+
+    <div class="button-grid">
+      <button class="btn-clear" id="btnClear">초기화</button>
+      <button class="btn-delete" id="btnDelete">⌫</button>
+
+      <button class="btn-number" data-value="7">7</button>
+      <button class="btn-number" data-value="8">8</button>
+      <button class="btn-number" data-value="9">9</button>
+      <button class="btn-operation" data-operation="/">÷</button>
+
+      <button class="btn-number" data-value="4">4</button>
+      <button class="btn-number" data-value="5">5</button>
+      <button class="btn-number" data-value="6">6</button>
+      <button class="btn-operation" data-operation="*">×</button>
+
+      <button class="btn-number" data-value="1">1</button>
+      <button class="btn-number" data-value="2">2</button>
+      <button class="btn-number" data-value="3">3</button>
+      <button class="btn-operation" data-operation="-">−</button>
+
+      <button class="btn-number" data-value="0">0</button>
+      <button class="btn-decimal" data-value=".">.</button>
+      <button class="btn-number" data-value="+00">00</button>
+      <button class="btn-operation" data-operation="+">+</button>
+    </div>
+
+    <div class="history">
+      <div class="history-label">계산 히스토리</div>
+      <div id="historyList" class="history-empty">없어요</div>
+    </div>
+
+    <div class="bottom-cta">
+      <button class="btn-equals" id="btnEquals">계산하기</button>
+    </div>
+  </div>
+
+  <script>
+    class Calculator {
+      constructor() {
+        this.display = document.getElementById('display');
+        this.operationIndicator = document.getElementById('operationIndicator');
+        this.historyList = document.getElementById('historyList');
+        this.btnEquals = document.getElementById('btnEquals');
+        this.btnClear = document.getElementById('btnClear');
+        this.btnDelete = document.getElementById('btnDelete');
+        this.themeToggle = document.getElementById('themeToggle');
+
+        this.currentValue = '0';
+        this.previousValue = '';
+        this.operation = null;
+        this.history = [];
+
+        this.setupEventListeners();
+        this.applyStoredTheme();
+      }
+
+      setupEventListeners() {
+        document.querySelectorAll('.btn-number').forEach(btn => {
+          btn.addEventListener('click', () => this.handleNumber(btn.dataset.value));
+        });
+
+        document.querySelectorAll('.btn-decimal').forEach(btn => {
+          btn.addEventListener('click', () => this.handleDecimal());
+        });
+
+        document.querySelectorAll('.btn-operation').forEach(btn => {
+          btn.addEventListener('click', () => this.handleOperation(btn.dataset.operation));
+        });
+
+        this.btnEquals.addEventListener('click', () => this.calculate());
+        this.btnClear.addEventListener('click', () => this.clear());
+        this.btnDelete.addEventListener('click', () => this.delete());
+        this.themeToggle.addEventListener('click', () => this.toggleTheme());
+
+        document.addEventListener('keydown', (e) => this.handleKeyboard(e));
+      }
+
+      handleNumber(value) {
+        if (this.currentValue === '0') {
+          this.currentValue = value;
+        } else {
+          this.currentValue += value;
+        }
+        this.updateDisplay();
+      }
+
+      handleDecimal() {
+        if (!this.currentValue.includes('.')) {
+          this.currentValue += '.';
+        }
+        this.updateDisplay();
+      }
+
+      handleOperation(op) {
+        if (this.operation !== null && this.currentValue !== '') {
+          this.calculate();
+        }
+        this.previousValue = this.currentValue;
+        this.currentValue = '';
+        this.operation = op;
+        this.updateOperationIndicator();
+      }
+
+      calculate() {
+        if (this.operation === null || this.currentValue === '' || this.previousValue === '') {
+          return;
+        }
+
+        const prev = parseFloat(this.previousValue);
+        const current = parseFloat(this.currentValue);
+        let result;
+
+        try {
+          switch(this.operation) {
+            case '+': result = prev + current; break;
+            case '-': result = prev - current; break;
+            case '*': result = prev * current; break;
+            case '/':
+              if (current === 0) {
+                this.display.textContent = '0으로 나눌 수 없어요';
+                this.display.classList.add('error');
+                setTimeout(() => this.clear(), 2000);
+                return;
+              }
+              result = prev / current;
+              break;
+          }
+
+          const calculation = `${prev} ${this.getOperationSymbol(this.operation)} ${current} = ${result}`;
+          this.history.unshift(calculation);
+          if (this.history.length > 10) this.history.pop();
+          this.updateHistory();
+
+          this.currentValue = result.toString();
+          this.operation = null;
+          this.previousValue = '';
+          this.updateDisplay();
+          this.updateOperationIndicator();
+        } catch (e) {
+          this.display.textContent = '오류가 생겼어요';
+          this.display.classList.add('error');
+          setTimeout(() => this.clear(), 2000);
+        }
+      }
+
+      getOperationSymbol(op) {
+        const symbols = { '+': '+', '-': '−', '*': '×', '/': '÷' };
+        return symbols[op] || op;
+      }
+
+      delete() {
+        if (this.currentValue.length > 1) {
+          this.currentValue = this.currentValue.slice(0, -1);
+        } else {
+          this.currentValue = '0';
+        }
+        this.updateDisplay();
+      }
+
+      clear() {
+        this.currentValue = '0';
+        this.previousValue = '';
+        this.operation = null;
+        this.updateDisplay();
+        this.updateOperationIndicator();
+        this.display.classList.remove('error');
+      }
+
+      updateDisplay() {
+        this.display.textContent = this.currentValue;
+        this.display.classList.toggle('empty', this.currentValue === '0');
+        this.btnEquals.disabled = this.operation === null || this.currentValue === '';
+      }
+
+      updateOperationIndicator() {
+        if (this.operation) {
+          this.operationIndicator.textContent = `${this.previousValue} ${this.getOperationSymbol(this.operation)}`;
+        } else {
+          this.operationIndicator.textContent = '';
+        }
+      }
+
+      updateHistory() {
+        if (this.history.length === 0) {
+          this.historyList.innerHTML = '<div class="history-empty">없어요</div>';
+          return;
+        }
+
+        this.historyList.innerHTML = this.history
+          .map(item => `<div class="history-item">${item}</div>`)
+          .join('');
+      }
+
+      handleKeyboard(e) {
+        if (e.key >= '0' && e.key <= '9') this.handleNumber(e.key);
+        if (e.key === '.') this.handleDecimal();
+        if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+          this.handleOperation(e.key);
+        }
+        if (e.key === 'Enter' || e.key === '=') {
+          e.preventDefault();
+          this.calculate();
+        }
+        if (e.key === 'Backspace') {
+          e.preventDefault();
+          this.delete();
+        }
+        if (e.key === 'Escape') {
+          this.clear();
+        }
+      }
+
+      toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        this.updateThemeToggleIcon(newTheme);
+      }
+
+      applyStoredTheme() {
+        const stored = localStorage.getItem('theme');
+        if (stored) {
+          document.documentElement.setAttribute('data-theme', stored);
+          this.updateThemeToggleIcon(stored);
+        }
+      }
+
+      updateThemeToggleIcon(theme) {
+        this.themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+      }
+    }
+
+    new Calculator();
+  </script>
+</body>
+</html>

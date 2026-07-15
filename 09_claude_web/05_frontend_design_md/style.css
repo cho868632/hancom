@@ -1,0 +1,293 @@
+:root {
+  /* Color */
+  --color-action-blue: #0066cc;
+  --color-focus-blue: #0071e3;
+  --color-sky-link-blue: #2997ff; /* defined for token parity, unused: no dark-surface text links here */
+  --color-canvas: #ffffff;
+  --color-parchment: #f5f5f7;
+  --color-pearl: #fafafc;
+  --color-tile-1: #272729;
+  --color-tile-2: #2a2a2c;
+  --color-tile-3: #252527;
+  --color-black: #000000;
+  --color-ink: #1d1d1f;
+  --color-body-on-dark: #ffffff;
+  --color-body-muted-dark: #cccccc;
+  --color-ink-muted-80: #333333;
+  --color-ink-muted-48: #7a7a7a;
+  --color-divider-soft: #f0f0f0;
+  --color-hairline: #e0e0e0;
+
+  /* Spacing (8px base) */
+  --space-xxs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 17px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+  --space-section: 80px;
+
+  /* Radius */
+  --radius-none: 0;
+  --radius-xs: 5px;
+  --radius-sm: 8px;
+  --radius-md: 11px;
+  --radius-lg: 18px;
+  --radius-pill: 9999px;
+
+  /* Elevation - the single shadow in the system, reserved for the calculator "product" card */
+  --shadow-product: 3px 5px 30px 0 rgba(0, 0, 0, 0.22);
+
+  --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-feature-settings: "ss03";
+  background: var(--color-parchment);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* Typography utility classes - exact values from design.md */
+.type-hero-display {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.07;
+  letter-spacing: calc(-0.28px - 0.01em);
+}
+
+.type-display-lg {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.type-display-md {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.47;
+  letter-spacing: calc(-0.374px - 0.01em);
+}
+
+.type-lead {
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.type-tagline {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+}
+
+.type-body-strong {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.374px;
+}
+
+.type-body {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.44;
+  letter-spacing: -0.374px;
+}
+
+.type-caption {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  letter-spacing: -0.224px;
+}
+
+.type-caption-strong {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
+}
+
+.type-button-large {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.app-title {
+  color: var(--color-ink);
+  margin: 0;
+}
+
+.hint {
+  color: var(--color-ink-muted-48);
+  margin: 0;
+}
+
+/* Calculator card - the single "product" resting on the parchment surface */
+.calculator {
+  width: min(100% - 32px, 380px);
+  background: var(--color-tile-1);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-product);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.calculator__display {
+  background: var(--color-tile-2);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg) var(--space-lg) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-xxs);
+  min-height: 120px;
+  justify-content: flex-end;
+}
+
+.calculator__expression {
+  color: var(--color-body-muted-dark);
+  min-height: 20px;
+}
+
+.calculator__result {
+  color: var(--color-body-on-dark);
+  margin: 0;
+  overflow-wrap: anywhere;
+  text-align: right;
+  width: 100%;
+}
+
+.calculator__result--md {
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.calculator__result--sm {
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.calculator__result--xs {
+  font-size: 28px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.calculator__keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: var(--space-sm);
+}
+
+.key {
+  min-height: 56px;
+  min-width: 44px;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.1s;
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+.key:focus-visible {
+  outline: 2px solid var(--color-focus-blue);
+  outline-offset: 2px;
+}
+
+.key--digit {
+  background: var(--color-tile-2);
+  color: var(--color-body-on-dark);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.24;
+  letter-spacing: -0.374px;
+}
+
+.key--operator {
+  background: var(--color-action-blue);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+}
+
+.key--equals {
+  background: var(--color-action-blue);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.key--utility {
+  background: var(--color-pearl);
+  color: var(--color-ink-muted-80);
+  border: 3px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.29;
+  letter-spacing: -0.224px;
+}
+
+/* Responsive */
+@media (min-width: 641px) {
+  .calculator {
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .key {
+    min-height: 52px;
+  }
+}
+
+@media (max-width: 419px) {
+  .type-hero-display {
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+}

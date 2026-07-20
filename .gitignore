@@ -3,3 +3,5 @@
 03_css/package-lock.json
 *node_modules
 *.stylelintrc.json
+*.vscode
+12_data/captured_images/*

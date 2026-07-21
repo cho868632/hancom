@@ -1,1 +1,4 @@
 *.pt
+.claude
+*.ipynb_checkpoints
+/advenced/yolo26s_openvino_model

@@ -5,3 +5,7 @@
 *.stylelintrc.json
 *.vscode
 12_data/captured_images/*
+.env
+__pycache__
+.claude
+*.pt
